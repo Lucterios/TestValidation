@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // table file write by SDK tool
-// --- Last modification: Date 13 November 2008 21:26:36 By  ---
+// --- Last modification: Date 21 November 2008 12:03:21 By  ---
 
 require_once('CORE/DBObject.inc.php');
 
@@ -29,7 +29,7 @@ class DBObj_TestValidation_MachinTable extends DBObj_Basic
 	var $extname="TestValidation";
 	var $__table="TestValidation_MachinTable";
 
-	var $DefaultFields=array();
+	var $DefaultFields=array(array('@refresh@'=>false, 'id'=>'', 'mode'=>'0', 'truc'=>'15'), array('@refresh@'=>false, 'id'=>'', 'mode'=>'1', 'truc'=>'97'), array('@refresh@'=>false, 'id'=>'', 'mode'=>'2', 'truc'=>'607'));
 	var $NbFieldsCheck=1;
 	var $Heritage="";
 	var $PosChild=-1;
