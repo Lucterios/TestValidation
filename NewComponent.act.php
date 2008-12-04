@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Action file write by SDK tool
-// --- Last modification: Date 21 August 2007 21:48:20 By Laurent GAY ---
+// --- Last modification: Date 28 November 2008 21:58:51 By  ---
 
 require_once('CORE/xfer_exception.inc.php');
 require_once('CORE/rights.inc.php');
@@ -33,39 +33,42 @@ require_once('CORE/xfer_custom.inc.php');
 //@DESC@Nouveau composants
 //@PARAM@ metaText
 
+
+//@LOCK:0
+
 function NewComponent($Params)
 {
 if (($ret=checkParams("TestValidation", "NewComponent",$Params ,"metaText"))!=null)
 	return $ret;
 $metaText=getParams($Params,"metaText",0);
+try {
 $xfer_result=&new Xfer_Container_Custom("TestValidation","NewComponent",$Params);
+$xfer_result->Caption="Nouveau composants";
 //@CODE_ACTION@
-
-
 $lbl=new Xfer_Comp_LabelForm('Lbl1');
 $lbl->setValue('metaText');
 $lbl->setLocation(0,0);
 $xfer_result->addComponent($lbl);
 $edt=new Xfer_Comp_MemoForm('metaText');
 $edt->setValue($metaText);
-$edt->setLocation(1,0);
+$edt->setLocation(1,0,2);
 $xfer_result->addComponent($edt);
 
 $lbl=new Xfer_Comp_LabelForm('Lbl2');
 $lbl->setValue($metaText);
-$lbl->setLocation(0,1,2);
+$lbl->setLocation(0,1,3);
 $xfer_result->addComponent($lbl);
 
 $lbl=new Xfer_Comp_LinkLabel('link1');
 $lbl->setValue('Liens Web');
 $lbl->setLink('http://localhost');
-$lbl->setLocation(0,2,2);
+$lbl->setLocation(0,2,3);
 $xfer_result->addComponent($lbl);
 
 $lbl=new Xfer_Comp_LinkLabel('link2');
 $lbl->setValue('Liens Email');
 $lbl->setLink('mailto:truc@lucterios.org');
-$lbl->setLocation(0,3,2);
+$lbl->setLocation(0,3,3);
 $xfer_result->addComponent($lbl);
 
 $img=new Xfer_Comp_Image('img1');
@@ -87,10 +90,30 @@ $img->setValue($content,$file_type);
 $img->setLocation(1,4);
 $xfer_result->addComponent($img);
 
+$up=new Xfer_Comp_UpLoad('up');
+$up->setValue('LoadFile');
+$up->addFilter('*.doc');
+$up->setLocation(0,5,2);
+$xfer_result->addComponent($up);
+
+$btn= new  Xfer_Comp_Button('btn2');
+$btn->setAction(new Xfer_Action('Load','edit.png','TestValidation','LoadFile',FORMTYPE_MODAL,CLOSE_YES,SELECT_NONE));
+$btn->setLocation(2,5);
+$xfer_result->addComponent($btn);
+
+$down=new Xfer_Comp_DownLoad('down');
+$down->setValue('LoadFile.doc');
+$down->setFileName('usr/TestValidation/LoadFile.doc');
+$down->setLocation(0,6,3);
+$xfer_result->addComponent($down);
+
 $xfer_result->addAction(new Xfer_Action('OK','ok.png','TestValidation','NewComponent',FORMTYPE_REFRESH,CLOSE_NO,SELECT_NONE));
 $xfer_result->addAction(new Xfer_Action('Fin','close.png','','',FORMTYPE_MODAL,CLOSE_YES,SELECT_NONE));
 //@CODE_ACTION@
-return $xfer_result->getReponseXML();
+}catch(Exception $e) {
+	throw $e;
+}
+return $xfer_result;
 }
 
 ?>

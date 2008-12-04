@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Action file write by SDK tool
-// --- Last modification: Date 01 August 2007 22:51:14 By Laurent GAY ---
+// --- Last modification: Date 28 November 2008 21:56:41 By  ---
 
 require_once('CORE/xfer_exception.inc.php');
 require_once('CORE/rights.inc.php');
@@ -39,7 +39,10 @@ require_once('CORE/xfer_custom.inc.php');
 //@PARAM@ ck1='n'
 //@PARAM@ slct1='1'
 //@PARAM@ flt2='5'
-//@PARAM@ cl1="1;2"
+//@PARAM@ cl1='1;2'
+
+
+//@LOCK:0
 
 function TestComposants($Params)
 {
@@ -51,8 +54,10 @@ $tm1=getParams($Params,"tm1",'12:34:00');
 $ck1=getParams($Params,"ck1",'n');
 $slct1=getParams($Params,"slct1",'1');
 $flt2=getParams($Params,"flt2",'5');
-$cl1=getParams($Params,"cl1","1;2");
+$cl1=getParams($Params,"cl1",'1;2');
+try {
 $xfer_result=&new Xfer_Container_Custom("TestValidation","TestComposants",$Params);
+$xfer_result->Caption="Action de validation des composants";
 //@CODE_ACTION@
 $xfer_result->Caption='Fiche de controle des composants';
 
@@ -165,7 +170,10 @@ $xfer_result->addAction(new Xfer_Action('Fin','close.png','','',FORMTYPE_MODAL,C
 
 $xfer_result->setCloseAction(new Xfer_Action('fermeture','','TestValidation','CloseEvenement',FORMTYPE_MODAL,CLOSE_YES,SELECT_NONE));
 //@CODE_ACTION@
-return $xfer_result->getReponseXML();
+}catch(Exception $e) {
+	throw $e;
+}
+return $xfer_result;
 }
 
 ?>

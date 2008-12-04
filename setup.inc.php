@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // setup file write by SDK tool
-// --- Last modification: Date 28 November 2008 14:02:21 By  ---
+// --- Last modification: Date 28 November 2008 22:12:25 By  ---
 
 $extention_name="TestValidation";
 $extention_description="TestValidation";
@@ -30,7 +30,7 @@ $extension_libre=true;
 $version_max=0;
 $version_min=3;
 $version_release=0;
-$version_build=0;
+$version_build=9;
 
 $depencies=array();
 $depencies[0] = new Param_Depencies("CORE", 0, 16, 0, 16, false);
@@ -54,37 +54,38 @@ $menus[10] = new Param_Menu("Liste", "Validation", "SuperTableTest_APAS_List", "
 
 $actions=array();
 $actions[0] = new Param_Action("Fermeture de l'action", "CloseEvenement", 0);
-$actions[1] = new Param_Action("Valider un MachinTable", "MachinTable_APAS_AddModifyAct", 0);
-$actions[2] = new Param_Action("Ajouter/Modifier un MachinTable", "MachinTable_APAS_AddModify", 0);
-$actions[3] = new Param_Action("Supprimer un MachinTable", "MachinTable_APAS_Del", 0);
-$actions[4] = new Param_Action("Fiche d'un MachinTable", "MachinTable_APAS_Fiche", 0);
-$actions[5] = new Param_Action("Lister des MachinTable", "MachinTable_APAS_List", 0);
-$actions[6] = new Param_Action("Nouveau composants", "NewComponent", 0);
-$actions[7] = new Param_Action("Valider un SuperTableTest", "SuperTableTest_APAS_AddModifyAct", 0);
-$actions[8] = new Param_Action("Ajouter/Modifier un SuperTableTest", "SuperTableTest_APAS_AddModify", 0);
-$actions[9] = new Param_Action("Supprimer un SuperTableTest", "SuperTableTest_APAS_Del", 0);
-$actions[10] = new Param_Action("Fiche d'un SuperTableTest", "SuperTableTest_APAS_Fiche", 0);
-$actions[11] = new Param_Action("Lister des SuperTableTest", "SuperTableTest_APAS_List", 0);
-$actions[12] = new Param_Action("Rechercher un SuperTableTest", "SuperTableTest_APAS_Search", 0);
-$actions[13] = new Param_Action("Erreurs en Base", "TableTest_APAS_ErrorInTable", 0);
-$actions[14] = new Param_Action("Lister des TableTest", "TableTest_APAS_List", 0);
-$actions[15] = new Param_Action("Rechercher un TableTest", "TableTest_APAS_Search", 0);
-$actions[16] = new Param_Action("Truc", "TableTest_APAS_Truc", 0);
-$actions[17] = new Param_Action("Valider une erreur", "TableTest_APAS_ValiderErreur", 0);
-$actions[18] = new Param_Action("Ajouter", "TableTest_APAS_ajouter", 0);
-$actions[19] = new Param_Action("Editer", "TableTest_APAS_editer", 0);
-$actions[20] = new Param_Action("Ecran des erreurs", "TableTest_APAS_errorManager", 0);
-$actions[21] = new Param_Action("Supprimer", "TableTest_APAS_suppr", 0);
-$actions[22] = new Param_Action("Valider", "TableTest_APAS_valider", 0);
-$actions[23] = new Param_Action("verouxDlg", "TableTest_APAS_verouxDlg", 0);
-$actions[24] = new Param_Action("verouxSimple", "TableTest_APAS_verouxSimple", 0);
-$actions[25] = new Param_Action("veroux", "TableTest_APAS_veroux", 0);
-$actions[26] = new Param_Action("Action de validation des composants", "TestComposants", 0);
-$actions[27] = new Param_Action("Valider un TrucTable", "TrucTable_APAS_AddModifyAct", 0);
-$actions[28] = new Param_Action("Ajouter/Modifier un TrucTable", "TrucTable_APAS_AddModify", 0);
-$actions[29] = new Param_Action("Supprimer un TrucTable", "TrucTable_APAS_Del", 0);
-$actions[30] = new Param_Action("Fiche d'un TrucTable", "TrucTable_APAS_Fiche", 0);
-$actions[31] = new Param_Action("Lister des TrucTable", "TrucTable_APAS_List", 0);
+$actions[1] = new Param_Action("", "LoadFile", 0);
+$actions[2] = new Param_Action("Valider un MachinTable", "MachinTable_APAS_AddModifyAct", 0);
+$actions[3] = new Param_Action("Ajouter/Modifier un MachinTable", "MachinTable_APAS_AddModify", 0);
+$actions[4] = new Param_Action("Supprimer un MachinTable", "MachinTable_APAS_Del", 0);
+$actions[5] = new Param_Action("Fiche d'un MachinTable", "MachinTable_APAS_Fiche", 0);
+$actions[6] = new Param_Action("Lister des MachinTable", "MachinTable_APAS_List", 0);
+$actions[7] = new Param_Action("Nouveau composants", "NewComponent", 0);
+$actions[8] = new Param_Action("Valider un SuperTableTest", "SuperTableTest_APAS_AddModifyAct", 0);
+$actions[9] = new Param_Action("Ajouter/Modifier un SuperTableTest", "SuperTableTest_APAS_AddModify", 0);
+$actions[10] = new Param_Action("Supprimer un SuperTableTest", "SuperTableTest_APAS_Del", 0);
+$actions[11] = new Param_Action("Fiche d'un SuperTableTest", "SuperTableTest_APAS_Fiche", 0);
+$actions[12] = new Param_Action("Lister des SuperTableTest", "SuperTableTest_APAS_List", 0);
+$actions[13] = new Param_Action("Rechercher un SuperTableTest", "SuperTableTest_APAS_Search", 0);
+$actions[14] = new Param_Action("Erreurs en Base", "TableTest_APAS_ErrorInTable", 0);
+$actions[15] = new Param_Action("Lister des TableTest", "TableTest_APAS_List", 0);
+$actions[16] = new Param_Action("Rechercher un TableTest", "TableTest_APAS_Search", 0);
+$actions[17] = new Param_Action("Truc", "TableTest_APAS_Truc", 0);
+$actions[18] = new Param_Action("Valider une erreur", "TableTest_APAS_ValiderErreur", 0);
+$actions[19] = new Param_Action("Ajouter", "TableTest_APAS_ajouter", 0);
+$actions[20] = new Param_Action("Editer", "TableTest_APAS_editer", 0);
+$actions[21] = new Param_Action("Ecran des erreurs", "TableTest_APAS_errorManager", 0);
+$actions[22] = new Param_Action("Supprimer", "TableTest_APAS_suppr", 0);
+$actions[23] = new Param_Action("Valider", "TableTest_APAS_valider", 0);
+$actions[24] = new Param_Action("verouxDlg", "TableTest_APAS_verouxDlg", 0);
+$actions[25] = new Param_Action("verouxSimple", "TableTest_APAS_verouxSimple", 0);
+$actions[26] = new Param_Action("veroux", "TableTest_APAS_veroux", 0);
+$actions[27] = new Param_Action("Action de validation des composants", "TestComposants", 0);
+$actions[28] = new Param_Action("Valider un TrucTable", "TrucTable_APAS_AddModifyAct", 0);
+$actions[29] = new Param_Action("Ajouter/Modifier un TrucTable", "TrucTable_APAS_AddModify", 0);
+$actions[30] = new Param_Action("Supprimer un TrucTable", "TrucTable_APAS_Del", 0);
+$actions[31] = new Param_Action("Fiche d'un TrucTable", "TrucTable_APAS_Fiche", 0);
+$actions[32] = new Param_Action("Lister des TrucTable", "TrucTable_APAS_List", 0);
 
 $params=array();
 
