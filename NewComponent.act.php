@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Action file write by SDK tool
-// --- Last modification: Date 28 November 2008 21:58:51 By  ---
+// --- Last modification: Date 04 December 2008 22:48:51 By  ---
 
 require_once('CORE/xfer_exception.inc.php');
 require_once('CORE/rights.inc.php');
@@ -89,23 +89,6 @@ $img=new Xfer_Comp_Image('img2');
 $img->setValue($content,$file_type);
 $img->setLocation(1,4);
 $xfer_result->addComponent($img);
-
-$up=new Xfer_Comp_UpLoad('up');
-$up->setValue('LoadFile');
-$up->addFilter('*.doc');
-$up->setLocation(0,5,2);
-$xfer_result->addComponent($up);
-
-$btn= new  Xfer_Comp_Button('btn2');
-$btn->setAction(new Xfer_Action('Load','edit.png','TestValidation','LoadFile',FORMTYPE_MODAL,CLOSE_YES,SELECT_NONE));
-$btn->setLocation(2,5);
-$xfer_result->addComponent($btn);
-
-$down=new Xfer_Comp_DownLoad('down');
-$down->setValue('LoadFile.doc');
-$down->setFileName('usr/TestValidation/LoadFile.doc');
-$down->setLocation(0,6,3);
-$xfer_result->addComponent($down);
 
 $xfer_result->addAction(new Xfer_Action('OK','ok.png','TestValidation','NewComponent',FORMTYPE_REFRESH,CLOSE_NO,SELECT_NONE));
 $xfer_result->addAction(new Xfer_Action('Fin','close.png','','',FORMTYPE_MODAL,CLOSE_YES,SELECT_NONE));

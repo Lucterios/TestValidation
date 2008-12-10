@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // setup file write by SDK tool
-// --- Last modification: Date 28 November 2008 22:12:25 By  ---
+// --- Last modification: Date 05 December 2008 1:00:02 By  ---
 
 $extention_name="TestValidation";
 $extention_description="TestValidation";
@@ -30,7 +30,7 @@ $extension_libre=true;
 $version_max=0;
 $version_min=3;
 $version_release=0;
-$version_build=9;
+$version_build=32;
 
 $depencies=array();
 $depencies[0] = new Param_Depencies("CORE", 0, 16, 0, 16, false);
@@ -51,6 +51,7 @@ $menus[7] = new Param_Menu("_Nouveau composants", "Validation", "NewComponent", 
 $menus[8] = new Param_Menu("Veroux", "Validation", "TableTest_APAS_veroux", "", "", 40 , 1, "");
 $menus[9] = new Param_Menu("Recherche", "Validation", "SuperTableTest_APAS_Search", "", "", 60 , 0, "");
 $menus[10] = new Param_Menu("Liste", "Validation", "SuperTableTest_APAS_List", "", "", 61 , 0, "");
+$menus[11] = new Param_Menu("Téléchargement", "Validation", "UpAndDownLoad", "", "", 70 , 1, "");
 
 $actions=array();
 $actions[0] = new Param_Action("Fermeture de l'action", "CloseEvenement", 0);
@@ -86,6 +87,7 @@ $actions[29] = new Param_Action("Ajouter/Modifier un TrucTable", "TrucTable_APAS
 $actions[30] = new Param_Action("Supprimer un TrucTable", "TrucTable_APAS_Del", 0);
 $actions[31] = new Param_Action("Fiche d'un TrucTable", "TrucTable_APAS_Fiche", 0);
 $actions[32] = new Param_Action("Lister des TrucTable", "TrucTable_APAS_List", 0);
+$actions[33] = new Param_Action("Téléchargement", "UpAndDownLoad", 0);
 
 $params=array();
 
