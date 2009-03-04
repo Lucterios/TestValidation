@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Action file write by SDK tool
-// --- Last modification: Date 05 December 2008 1:00:02 By  ---
+// --- Last modification: Date 04 March 2009 19:22:22 By  ---
 
 require_once('CORE/xfer_exception.inc.php');
 require_once('CORE/rights.inc.php');
@@ -43,12 +43,19 @@ try {
 $xfer_result=&new Xfer_Container_Acknowledge("TestValidation","LoadFile",$Params);
 $xfer_result->Caption="";
 //@CODE_ACTION@
-$path = "usr/TestValidation";
+require_once "CORE/Lucterios_Error.inc.php";
+global $rootPath;
+if(!isset($rootPath))
+	$rootPath = "";
+
+$path = realpath($rootPath."usr/TestValidation");
 if(!is_dir($path))
 	@mkdir($path,0777);
 $destination_file = $path."/FileName.$typeFile";
 if (!is_file($destination_file))
 	@unlink($destination_file);
+if (is_file($destination_file))
+	throw new LucteriosException(IMPORTANT,"fichier '$destination_file' non supprimable!");
 
 require_once("CORE/saveFileDownloaded.mth.php");
 if (array_key_exists('up',$Params) && ($Params['up']!=''))
@@ -56,10 +63,8 @@ if (array_key_exists('up',$Params) && ($Params['up']!=''))
 else if (array_key_exists('down',$Params) && ($Params['down']!=''))
 	$ret = saveFileDownloaded($xfer_result,$Params,'down',$destination_file,true);
 
-if (!is_file($destination_file)) {
-	require_once "CORE/Lucterios_Error.inc.php";
+if (!is_file($destination_file))
 	throw new LucteriosException(IMPORTANT,"fichier '$destination_file' non sauvé!");
-}
 //@CODE_ACTION@
 }catch(Exception $e) {
 	throw $e;

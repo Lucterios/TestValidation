@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Action file write by SDK tool
-// --- Last modification: Date 05 December 2008 0:45:53 By  ---
+// --- Last modification: Date 04 March 2009 19:15:22 By  ---
 
 require_once('CORE/xfer_exception.inc.php');
 require_once('CORE/rights.inc.php');
@@ -43,6 +43,10 @@ try {
 $xfer_result=&new Xfer_Container_Custom("TestValidation","UpAndDownLoad",$Params);
 $xfer_result->Caption="Téléchargement";
 //@CODE_ACTION@
+global $rootPath;
+if(!isset($rootPath))
+	$rootPath = "";
+
 $lbl=new Xfer_Comp_LabelForm('lbltypeFile');
 $lbl->setValue('Type de fichier');
 $lbl->setLocation(0,1);
@@ -74,7 +78,7 @@ $down=new Xfer_Comp_DownLoad('down');
 $down->compress=true;
 $down->HttpFile=true;
 $down->setValue("FileName.$typeFile");
-$down->setFileName("usr/TestValidation/FileName.$typeFile");
+$down->setFileName($rootPath."usr/TestValidation/FileName.$typeFile");
 $down->setAction($load_action);
 $down->setLocation(0,3,3);
 $xfer_result->addComponent($down);
