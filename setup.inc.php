@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // setup file write by SDK tool
-// --- Last modification: Date 05 March 2009 0:12:42 By  ---
+// --- Last modification: Date 20 March 2009 12:58:49 By  ---
 
 $extention_name="TestValidation";
 $extention_description="TestValidation";
@@ -30,7 +30,7 @@ $extension_libre=true;
 $version_max=0;
 $version_min=3;
 $version_release=0;
-$version_build=40;
+$version_build=50;
 
 $depencies=array();
 $depencies[0] = new Param_Depencies("CORE", 0, 93, 0, 90, false);

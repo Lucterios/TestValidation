@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Method file write by SDK tool
-// --- Last modification: Date 23 November 2008 12:54:22 By  ---
+// --- Last modification: Date 20 March 2009 12:58:49 By  ---
 
 require_once('CORE/xfer_exception.inc.php');
 require_once('CORE/rights.inc.php');
@@ -37,6 +37,12 @@ function SuperTableTest_APAS_show(&$self,$posX,$posY,$xfer_result)
 //@CODE_ACTION@
 $xfer_result=$self->Super->show($posX, $posY, $xfer_result);
 $posY+=6;
+$xfer_result->setDBObject($self,'1Virtuel'.SEP_SHOW.'#virtualData',false,$posY++,$posX);
+$virt=$xfer_result->getComponents('Virtuel'.SEP_SHOW.'#virtualData');
+$virt->m_max=10000;
+$virt->m_min=-10000;
+$virt->m_prec=3;
+
 $xfer_result->setDBObject($self,"time",true,$posY++,$posX);
 $lbl = new Xfer_Comp_LabelForm("truclbl");
 $lbl->setValue("{[bold]}Truc{[/bold]}");

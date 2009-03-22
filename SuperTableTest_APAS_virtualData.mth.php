@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Method file write by SDK tool
-// --- Last modification: Date 20 March 2009 10:20:54 By  ---
+// --- Last modification: Date 20 March 2009 10:19:39 By  ---
 
 require_once('CORE/xfer_exception.inc.php');
 require_once('CORE/rights.inc.php');
@@ -27,19 +27,13 @@ require_once('CORE/rights.inc.php');
 require_once('extensions/TestValidation/SuperTableTest.tbl.php');
 //@TABLES@
 
-//@DESC@getList de SuperTableTest
+//@DESC@
 //@PARAM@ 
 
-function SuperTableTest_APAS_getGrid(&$self)
+function SuperTableTest_APAS_virtualData(&$self)
 {
 //@CODE_ACTION@
-$grid = new Xfer_Comp_Grid("SuperTableTest");
-$grid->setDBObject($self, array('name','value','Virtuel'.SEP_SHOW.'#virtualData'));
-$grid->addAction($self->newAction("_Editer", "edit.png", "Fiche",FORMTYPE_MODAL,CLOSE_NO, SELECT_SINGLE));
-$grid->addAction($self->newAction("_Supprimer", "suppr.png", "Del", FORMTYPE_MODAL,CLOSE_NO, SELECT_SINGLE));
-$grid->addAction($self->newAction("_Ajouter", "add.png", "AddModify",FORMTYPE_MODAL,CLOSE_NO, SELECT_NONE));
-$grid->setSize(200,750);
-return $grid;
+return ($self->value*2);
 //@CODE_ACTION@
 }
 
