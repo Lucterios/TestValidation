@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Method file write by SDK tool
-// --- Last modification: Date 29 April 2009 23:23:32 By  ---
+// --- Last modification: Date 29 April 2009 23:24:23 By  ---
 
 require_once('CORE/xfer_exception.inc.php');
 require_once('CORE/rights.inc.php');
@@ -27,16 +27,13 @@ require_once('CORE/rights.inc.php');
 require_once('extensions/TestValidation/TableTest.tbl.php');
 //@TABLES@
 
-//@DESC@getList de TableTest
+//@DESC@retourne une autre valeur virtual
 //@PARAM@ 
 
-function TableTest_APAS_getGrid(&$self)
+function TableTest_APAS_getOtherVirtual(&$self)
 {
 //@CODE_ACTION@
-$grid = new Xfer_Comp_Grid("TableTest");
-$grid->setDBObject($self, array("name","value","Virtuel A".SEP_SHOW."#getVirtualField","Virtual B".SEP_SHOW."#getOtherVirtual"));
-$grid->setSize(200,750);
-return $grid;
+return number_format(rad2deg($self->value*$self->value),4,","," ");
 //@CODE_ACTION@
 }
 

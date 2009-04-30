@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Action file write by SDK tool
-// --- Last modification: Date 17 August 2007 23:59:30 By Laurent GAY ---
+// --- Last modification: Date 29 April 2009 23:15:38 By  ---
 
 require_once('CORE/xfer_exception.inc.php');
 require_once('CORE/rights.inc.php');
@@ -36,6 +36,9 @@ require_once('CORE/xfer.inc.php');
 //@PARAM@ Error
 //@PARAM@ List
 
+
+//@LOCK:0
+
 function TableTest_APAS_valider($Params)
 {
 if (($ret=checkParams("TestValidation", "TableTest_APAS_valider",$Params ,"Option","Error","List"))!=null)
@@ -44,9 +47,10 @@ $Option=getParams($Params,"Option",0);
 $Error=getParams($Params,"Error",0);
 $List=getParams($Params,"List",0);
 $self=new DBObj_TestValidation_TableTest();
+try {
 $xfer_result=&new Xfer_Container_Acknowledge("TestValidation","TableTest_APAS_valider",$Params);
+$xfer_result->Caption="Valider";
 //@CODE_ACTION@
-
 global $connect;
 $connect->begin();
 try {
@@ -59,12 +63,15 @@ try {
 		throw new LucteriosException(CRITIC,"Grosse erreur");
 	$connect->commit();
 }
- catch(Exception $e) {
+catch(Exception $e) {
 	$connect->rollback();
 	throw $e;
 }
 //@CODE_ACTION@
-return $xfer_result->getReponseXML();
+}catch(Exception $e) {
+	throw $e;
+}
+return $xfer_result;
 }
 
 ?>

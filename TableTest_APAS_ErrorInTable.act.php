@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Action file write by SDK tool
-// --- Last modification: Date 10 August 2007 10:36:40 By Laurent GAY ---
+// --- Last modification: Date 29 April 2009 23:35:24 By  ---
 
 require_once('CORE/xfer_exception.inc.php');
 require_once('CORE/rights.inc.php');
@@ -34,14 +34,20 @@ require_once('CORE/xfer_custom.inc.php');
 //@DESC@Erreurs en Base
 //@PARAM@ 
 
+
+//@LOCK:0
+
 function TableTest_APAS_ErrorInTable($Params)
 {
 $self=new DBObj_TestValidation_TableTest();
+try {
 $xfer_result=&new Xfer_Container_Custom("TestValidation","TableTest_APAS_ErrorInTable",$Params);
+$xfer_result->Caption="Erreurs en Base";
 //@CODE_ACTION@
+list($usec, $sec) = split(" ", microtime());
+
 $self->find();
-$grid = new Xfer_Comp_Grid("List");
-$grid->setDBObject($self);
+$grid = $self->getGrid("TableTest");
 $grid->addAction($self->newAction("_Ajouter", "add.png", "ajouter", FORMTYPE_MODAL, CLOSE_NO, SELECT_NONE));
 $grid->addAction($self->newAction("_Editer", "edit.png", "editer", FORMTYPE_MODAL, CLOSE_NO, SELECT_SINGLE));
 $grid->addAction($self->newAction("_Suppr.", "del.png", "suppr", FORMTYPE_MODAL, CLOSE_NO, SELECT_SINGLE));
@@ -58,9 +64,20 @@ $check->setValue(0);
 $check->setLocation(1,1);
 $xfer_result->addComponent($check);
 
+list($usec2, $sec2) = split(" ", microtime());
+$t = ($sec2-$sec)+(($usec2-$usec)/10);
+
+$time=new Xfer_Comp_LabelForm('time');
+$time->setValue("Time=$t");
+$time->setLocation(0,2,2);
+$xfer_result->addComponent($time);
+
 $xfer_result->addAction(new Xfer_Action("_Fermer", "close.png"));
 //@CODE_ACTION@
-return $xfer_result->getReponseXML();
+}catch(Exception $e) {
+	throw $e;
+}
+return $xfer_result;
 }
 
 ?>
