@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // setup file write by SDK tool
-// --- Last modification: Date 29 April 2009 23:35:24 By  ---
+// --- Last modification: Date 05 May 2009 0:05:13 By  ---
 
 $extention_name="TestValidation";
 $extention_description="TestValidation";
@@ -29,12 +29,13 @@ $extension_libre=true;
 
 $version_max=0;
 $version_min=3;
-$version_release=0;
-$version_build=65;
+$version_release=2;
+$version_build=82;
 
 $depencies=array();
 $depencies[0] = new Param_Depencies("CORE", 0, 93, 0, 90, false);
 $depencies[1] = new Param_Depencies("exemple", 0, 10, 0, 1, true);
+$depencies[2] = new Param_Depencies("org_lucterios_contacts", 0, 93, 0, 91, false);
 
 $rights=array();
 $rights[0] = new Param_Rigth("Action Simple",50);
@@ -52,6 +53,7 @@ $menus[8] = new Param_Menu("Veroux", "Validation", "TableTest_APAS_veroux", "", 
 $menus[9] = new Param_Menu("Recherche", "Validation", "SuperTableTest_APAS_Search", "", "", 60 , 0, "");
 $menus[10] = new Param_Menu("Liste", "Validation", "SuperTableTest_APAS_List", "", "", 61 , 0, "");
 $menus[11] = new Param_Menu("Téléchargement", "Validation", "UpAndDownLoad", "", "", 70 , 1, "");
+$menus[12] = new Param_Menu("Selection de contacts", "Validation", "selectContact", "", "", 80 , 0, "");
 
 $actions=array();
 $actions[0] = new Param_Action("Fermeture de l'action", "CloseEvenement", 0);
@@ -88,6 +90,7 @@ $actions[30] = new Param_Action("Supprimer un TrucTable", "TrucTable_APAS_Del", 
 $actions[31] = new Param_Action("Fiche d'un TrucTable", "TrucTable_APAS_Fiche", 0);
 $actions[32] = new Param_Action("Lister des TrucTable", "TrucTable_APAS_List", 0);
 $actions[33] = new Param_Action("Téléchargement", "UpAndDownLoad", 0);
+$actions[34] = new Param_Action("", "selectContact", 0);
 
 $params=array();
 
