@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Action file write by SDK tool
-// --- Last modification: Date 23 November 2008 12:50:29 By  ---
+// --- Last modification: Date 04 June 2009 20:56:44 By  ---
 
 require_once('CORE/xfer_exception.inc.php');
 require_once('CORE/rights.inc.php');
@@ -32,6 +32,7 @@ require_once('CORE/xfer.inc.php');
 
 
 //@DESC@Supprimer un MachinTable
+//@PARAM@ 
 //@INDEX:MachinTable
 
 //@TRANSACTION:

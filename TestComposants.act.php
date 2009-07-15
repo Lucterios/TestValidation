@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Action file write by SDK tool
-// --- Last modification: Date 16 December 2008 18:58:26 By  ---
+// --- Last modification: Date 24 May 2009 16:58:55 By  ---
 
 require_once('CORE/xfer_exception.inc.php');
 require_once('CORE/rights.inc.php');
@@ -142,7 +142,12 @@ $lbl->setValue('Select='.$slct1);
 $lbl->setLocation(0,8);
 $xfer_result->addComponent($lbl);
 $slct=new Xfer_Comp_Select('slct1');
-$slct->setSelect(array('1'=>'abc','2'=>'def','3'=>'ghij','4'=>'klmn'));
+if ($flt2<2)
+	$slct->setSelect(array('1'=>'abc','2'=>'def'));
+elseif ($flt2<10)
+	$slct->setSelect(array('1'=>'abc','2'=>'def','3'=>'ghij'));
+else
+	$slct->setSelect(array('1'=>'abc','2'=>'def','3'=>'ghij','4'=>'klmn'));
 $slct->setValue($slct1);
 $slct->setAction($act_modif);
 $slct->setLocation(1,8);
