@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Test file write by SDK tool
-// --- Last modification: Date 13 November 2008 22:54:12 By  ---
+// --- Last modification: Date 18 November 2009 11:31:01 By  ---
 
 
 //@TABLES@
@@ -35,23 +35,13 @@ function TestValidation_deleteEchecBloc(&$test)
 {
 //@CODE_ACTION@
 global $connect;
-$connect->execute("TRUNCATE TABLE TestValidation_MachinTable");
-$connect->execute("TRUNCATE TABLE TestValidation_TrucTable");
-$connect->execute("TRUNCATE TABLE TestValidation_SuperTableTest");
-$connect->execute("TRUNCATE TABLE TestValidation_TableTest");
-
+global $connect;
+$connect->execute("TRUNCATE TABLE TestValidation_AutreTable",true);
+$connect->execute("DELETE FROM TestValidation_TableTest",true);
 $connect->execute("INSERT INTO TestValidation_TableTest (id,value,name) VALUES (100,0,'ABC')",true);
 $connect->execute("INSERT INTO TestValidation_TableTest (id,value,name) VALUES (101,876.23,'VBC')",true);
-$connect->execute("INSERT INTO TestValidation_SuperTableTest (id,time,superId) VALUES (100,'12:34:45',100)",true);
 $connect->execute("INSERT INTO TestValidation_SuperTableTest (id,time,superId) VALUES (101,'00:00:00',101)",true);
-$connect->execute("INSERT INTO TestValidation_TrucTable (id,number,superTest) VALUES (100,123,100)",true);
-$connect->execute("INSERT INTO TestValidation_TrucTable (id,number,superTest) VALUES (101,876,101)",true);
-$connect->execute("INSERT INTO TestValidation_TrucTable (id,number,superTest) VALUES (102,382,100)",true);
-$connect->execute("INSERT INTO TestValidation_MachinTable (id,mode,truc) VALUES (100,0,100)",true);
-$connect->execute("INSERT INTO TestValidation_MachinTable (id,mode,truc) VALUES (101,2,101)",true);
-$connect->execute("INSERT INTO TestValidation_MachinTable (id,mode,truc) VALUES (102,1,100)",true);
-$connect->execute("INSERT INTO TestValidation_MachinTable (id,mode,truc) VALUES (103,1,101)",true);
-try {
+
 	$ttest=new DBObj_TestValidation_TableTest;
 	$test->assertEquals(2,$ttest->find(),"IN TableTest nb");
 	$stest=new DBObj_TestValidation_SuperTableTest;
@@ -59,7 +49,7 @@ try {
 	$truc=new DBObj_TestValidation_TrucTable;
 	$test->assertEquals(3,$truc->find(),"IN TrucTable nb");
 	$machin=new DBObj_TestValidation_MachinTable;
-	$test->assertEquals(4,$machin->find(),"IN MachinTable nb");
+	$test->assertEquals(7,$machin->find(),"IN MachinTable nb");
 
 	$ttest=new DBObj_TestValidation_TableTest;
 	$ttest->get(100);
@@ -125,7 +115,10 @@ try {
 	$test->assertEquals('102',$truc->id,"OUT TrucTable id 3");
 
 	$machin=new DBObj_TestValidation_MachinTable;
-	$test->assertEquals(4,$machin->find(),"OUT MachinTable nb");
+	$test->assertEquals(7,$machin->find(),"OUT MachinTable nb");
+	$machin->fetch();
+	$machin->fetch();
+	$machin->fetch();
 	$machin->fetch();
 	$test->assertEquals('100',$machin->id,"OUT MachinTable id 1");
 	$machin->fetch();
@@ -134,18 +127,6 @@ try {
 	$test->assertEquals('102',$machin->id,"OUT MachinTable id 3");
 	$machin->fetch();
 	$test->assertEquals('103',$machin->id,"OUT MachinTable id 4");
-
-	$connect->execute("TRUNCATE TABLE TestValidation_MachinTable");
-	$connect->execute("TRUNCATE TABLE TestValidation_TrucTable");
-	$connect->execute("TRUNCATE TABLE TestValidation_SuperTableTest");
-	$connect->execute("TRUNCATE TABLE TestValidation_TableTest");
-} catch(Exception $e) {
-	$connect->execute("TRUNCATE TABLE TestValidation_MachinTable");
-	$connect->execute("TRUNCATE TABLE TestValidation_TrucTable");
-	$connect->execute("TRUNCATE TABLE TestValidation_SuperTableTest");
-	$connect->execute("TRUNCATE TABLE TestValidation_TableTest");
-	throw $e;
-}
 //@CODE_ACTION@
 }
 

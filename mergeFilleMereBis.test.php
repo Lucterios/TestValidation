@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Test file write by SDK tool
-// --- Last modification: Date 13 November 2008 20:45:35 By  ---
+// --- Last modification: Date 18 November 2009 10:37:53 By  ---
 
 
 //@TABLES@
@@ -30,21 +30,10 @@
 function TestValidation_mergeFilleMereBis(&$test)
 {
 //@CODE_ACTION@
-global $connect;
-$connect->execute("TRUNCATE TABLE TestValidation_TableTest");
-$connect->execute("TRUNCATE TABLE TestValidation_SuperTableTest");
-$connect->execute("TRUNCATE TABLE TestValidation_AutreTable");
-$connect->execute("INSERT INTO TestValidation_TableTest (id,name,value) VALUES (100,'ABC',12.34)");
-$connect->execute("INSERT INTO TestValidation_TableTest (id,name,value) VALUES (101,'XYZ',98.43)");
-$connect->execute("INSERT INTO TestValidation_SuperTableTest (id,time,superId) VALUES (100,'23:45:36',100)");
-$connect->execute("INSERT INTO TestValidation_AutreTable (text,date,test) VALUES ('tyu','1999-04-13',100)");
-$connect->execute("INSERT INTO TestValidation_AutreTable (text,date,test) VALUES ('vcx','1995-07-21',101)");
-$connect->execute("INSERT INTO TestValidation_AutreTable (text,date,test) VALUES ('qsd','1992-11-06',101)");
-try {
-	$supertable=new DBObj_TestValidation_SuperTableTest;
+$supertable=new DBObj_TestValidation_SuperTableTest;
 	$test->assertEquals(1,$supertable->find(),"IN SuperTableTest nb");
 	$table=new DBObj_TestValidation_TableTest;
-	$test->assertEquals(2,$table->find(),"IN TableTest nb");
+	$test->assertEquals(4,$table->find(),"IN TableTest nb");
 	$autre=new DBObj_TestValidation_AutreTable;
 	$test->assertEquals(3,$autre->find(),"IN AutreTable nb");
 
@@ -62,7 +51,9 @@ try {
 	$test->assertEquals('100',$supertable->superId,"OUT SuperTableTest super");
 
 	$table=new DBObj_TestValidation_TableTest;
-	$test->assertEquals(1,$table->find(),"OUT TableTest nb");
+	$test->assertEquals(3,$table->find(),"OUT TableTest nb");
+	$table->fetch();
+	$table->fetch();
 	$table->fetch();
 	$test->assertEquals('100',$table->id,"OUT TableTest id");
 	$test->assertEquals('ABC',$table->name,"OUT TableTest name");
@@ -82,16 +73,6 @@ try {
 	$test->assertEquals('qsd',$autre->text,"OUT AutreTable text 3");
 	$test->assertEquals('1992-11-06',$autre->date,"OUT AutreTable date 3");
 	$test->assertEquals('100',$autre->test,"OUT AutreTable test 3");
-
-	$connect->execute("TRUNCATE TABLE TestValidation_TableTest");
-	$connect->execute("TRUNCATE TABLE TestValidation_SuperTableTest");
-	$connect->execute("TRUNCATE TABLE TestValidation_AutreTable");
-} catch(Exception $e) {
-	$connect->execute("TRUNCATE TABLE TestValidation_TableTest");
-	$connect->execute("TRUNCATE TABLE TestValidation_SuperTableTest");
-	$connect->execute("TRUNCATE TABLE TestValidation_AutreTable");
-	throw $e;
-}
 //@CODE_ACTION@
 }
 

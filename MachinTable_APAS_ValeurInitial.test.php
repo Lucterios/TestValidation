@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Test file write by SDK tool
-// --- Last modification: Date 04 June 2009 21:05:27 By  ---
+// --- Last modification: Date 18 November 2009 9:56:55 By  ---
 
 
 //@TABLES@
@@ -33,30 +33,24 @@ function TestValidation_MachinTable_APAS_ValeurInitial(&$test)
 //@CODE_ACTION@
 global $connect;
 $connect->execute("TRUNCATE TABLE TestValidation_MachinTable");
-try {
-	$Machin=new DBObj_TestValidation_MachinTable;
-	$test->assertEquals(0,$Machin->find(),"MachinTable nb 1");
 
-	require_once("CORE/extensionManager.inc.php");
-	$ext=new Extension('TestValidation','./extensions/TestValidation/');
-	$ret=$ext->upgradeDefaultValueTable();
-	$msg=$ext->message;
-	$test->assertEquals(true,$ret,"upgradeDefaultValueTable 1:$msg");
-	$Machin=new DBObj_TestValidation_MachinTable;
-	$test->assertEquals(3,$Machin->find(),"MachinTable nb 2:".$ext->message);
+$Machin=new DBObj_TestValidation_MachinTable;
+$test->assertEquals(0,$Machin->find(),"MachinTable nb 1");
 
-	$ext=new Extension('TestValidation','./extensions/TestValidation/');
-	$ret=$ext->upgradeDefaultValueTable();
-	$msg=$ext->message;
-	$test->assertEquals(true,$ret,"upgradeDefaultValueTable 2:$msg");
-	$Machin=new DBObj_TestValidation_MachinTable;
-	$test->assertEquals(3,$Machin->find(),"MachinTable nb 3:".$ext->message);
+require_once("CORE/extensionManager.inc.php");
+$ext=new Extension('TestValidation','./extensions/TestValidation/');
+$ret=$ext->upgradeDefaultValueTable();
+$msg=$ext->message;
+$test->assertEquals(true,$ret,"upgradeDefaultValueTable 1:$msg");
+$Machin=new DBObj_TestValidation_MachinTable;
+$test->assertEquals(3,$Machin->find(),"MachinTable nb 2:".$ext->message);
 
-	$connect->execute("TRUNCATE TABLE TestValidation_MachinTable");
-} catch(Exception $e) {
-	$connect->execute("TRUNCATE TABLE TestValidation_MachinTable");
-	throw $e;
-}
+$ext=new Extension('TestValidation','./extensions/TestValidation/');
+$ret=$ext->upgradeDefaultValueTable();
+$msg=$ext->message;
+$test->assertEquals(true,$ret,"upgradeDefaultValueTable 2:$msg");
+$Machin=new DBObj_TestValidation_MachinTable;
+$test->assertEquals(3,$Machin->find(),"MachinTable nb 3:".$ext->message);
 //@CODE_ACTION@
 }
 

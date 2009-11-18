@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Test file write by SDK tool
-// --- Last modification: Date 13 November 2008 20:17:22 By  ---
+// --- Last modification: Date 18 November 2009 11:14:53 By  ---
 
 
 //@TABLES@
@@ -35,26 +35,14 @@ function TestValidation_mergeFilleFille(&$test)
 {
 //@CODE_ACTION@
 global $connect;
-$connect->execute("TRUNCATE TABLE TestValidation_TableTest");
-$connect->execute("TRUNCATE TABLE TestValidation_SuperTableTest");
-$connect->execute("TRUNCATE TABLE TestValidation_AutreTable");
-$connect->execute("TRUNCATE TABLE TestValidation_TrucTable");
-$connect->execute("INSERT INTO TestValidation_TableTest (id,name,value) VALUES (100,'ABC',12.34)");
-$connect->execute("INSERT INTO TestValidation_TableTest (id,name,value) VALUES (101,'XYZ',98.43)");
-$connect->execute("INSERT INTO TestValidation_SuperTableTest (id,time,superId) VALUES (100,'23:45:36',100)");
 $connect->execute("INSERT INTO TestValidation_SuperTableTest (id,time,superId) VALUES (101,'16:38:08',101)");
-$connect->execute("INSERT INTO TestValidation_AutreTable (text,date,test) VALUES ('tyu','1999-04-13',100)");
-$connect->execute("INSERT INTO TestValidation_AutreTable (text,date,test) VALUES ('vcx','1995-07-21',101)");
-$connect->execute("INSERT INTO TestValidation_AutreTable (text,date,test) VALUES ('qsd','1992-11-06',101)");
-$connect->execute("INSERT INTO TestValidation_TrucTable (id,number,superTest) VALUES (100,987,100)");
-$connect->execute("INSERT INTO TestValidation_TrucTable (id,number,superTest) VALUES (101,453,101)");
-try {
+
 	$tructable=new DBObj_TestValidation_TrucTable;
-	$test->assertEquals(2,$tructable->find(),"IN TrucTable nb");
+	$test->assertEquals(3,$tructable->find(),"IN TrucTable nb");
 	$supertable=new DBObj_TestValidation_SuperTableTest;
 	$test->assertEquals(2,$supertable->find(),"IN SuperTableTest nb");
 	$table=new DBObj_TestValidation_TableTest;
-	$test->assertEquals(2,$table->find(),"IN TableTest nb");
+	$test->assertEquals(4,$table->find(),"IN TableTest nb");
 	$autre=new DBObj_TestValidation_AutreTable;
 	$test->assertEquals(3,$autre->find(),"IN AutreTable nb");
 
@@ -72,7 +60,9 @@ try {
 	$test->assertEquals('100',$supertable->superId,"OUT SuperTableTest super");
 
 	$table=new DBObj_TestValidation_TableTest;
-	$test->assertEquals(1,$table->find(),"OUT TableTest nb");
+	$test->assertEquals(3,$table->find(),"OUT TableTest nb");
+	$table->fetch();
+	$table->fetch();
 	$table->fetch();
 	$test->assertEquals('100',$table->id,"OUT TableTest id");
 	$test->assertEquals('ABC',$table->name,"OUT TableTest name");
@@ -94,27 +84,19 @@ try {
 	$test->assertEquals('100',$autre->test,"OUT AutreTable test 3");
 
 	$tructable=new DBObj_TestValidation_TrucTable;
-	$test->assertEquals(2,$tructable->find(),"OUT TrucTable nb");
+	$test->assertEquals(3,$tructable->find(),"OUT TrucTable nb");
 	$tructable->fetch();
 	$test->assertEquals('100',$tructable->id,"OUT TrucTable id 1");
-	$test->assertEquals('987',$tructable->number,"OUT TrucTable number 1");
+	$test->assertEquals('123',$tructable->number,"OUT TrucTable number 1");
 	$test->assertEquals('100',$tructable->superTest,"OUT TrucTable superTest 1");
 	$tructable->fetch();
 	$test->assertEquals('101',$tructable->id,"OUT TrucTable id 2");
-	$test->assertEquals('453',$tructable->number,"OUT TrucTable number 2");
+	$test->assertEquals('876',$tructable->number,"OUT TrucTable number 2");
 	$test->assertEquals('100',$tructable->superTest,"OUT TrucTable superTest 2");
-
-	$connect->execute("TRUNCATE TABLE TestValidation_TableTest");
-	$connect->execute("TRUNCATE TABLE TestValidation_SuperTableTest");
-	$connect->execute("TRUNCATE TABLE TestValidation_AutreTable");
-	$connect->execute("TRUNCATE TABLE TestValidation_TrucTable");
-} catch(Exception $e) {
-	$connect->execute("TRUNCATE TABLE TestValidation_TableTest");
-	$connect->execute("TRUNCATE TABLE TestValidation_SuperTableTest");
-	$connect->execute("TRUNCATE TABLE TestValidation_AutreTable");
-	$connect->execute("TRUNCATE TABLE TestValidation_TrucTable");
-	throw $e;
-}
+	$tructable->fetch();
+	$test->assertEquals('102',$tructable->id,"OUT TrucTable id 3");
+	$test->assertEquals('382',$tructable->number,"OUT TrucTable number 3");
+	$test->assertEquals('100',$tructable->superTest,"OUT TrucTable superTest 3");
 //@CODE_ACTION@
 }
 

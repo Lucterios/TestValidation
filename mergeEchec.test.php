@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Test file write by SDK tool
-// --- Last modification: Date 15 November 2008 2:17:46 By  ---
+// --- Last modification: Date 18 November 2009 10:24:22 By  ---
 
 
 //@TABLES@
@@ -30,17 +30,8 @@
 function TestValidation_mergeEchec(&$test)
 {
 //@CODE_ACTION@
-global $connect;
-$connect->execute("TRUNCATE TABLE TestValidation_TableTest",true);
-$connect->execute("TRUNCATE TABLE TestValidation_AutreTable",true);
-$connect->execute("INSERT INTO TestValidation_TableTest (id,name,value) VALUES (100,'ABC',12.34)",true);
-$connect->execute("INSERT INTO TestValidation_TableTest (id,name,value) VALUES (101,'XYZ',98.43)",true);
-$connect->execute("INSERT INTO TestValidation_AutreTable (id,text,date,test) VALUES (100,'tyu','1999-04-13',100)",true);
-$connect->execute("INSERT INTO TestValidation_AutreTable (id,text,date,test) VALUES (101,'vcx','1995-07-21',101)",true);
-$connect->execute("INSERT INTO TestValidation_AutreTable (id,text,date,test) VALUES (102,'qsd','1992-11-06',101)",true);
-try {
-	$table=new DBObj_TestValidation_TableTest;
-	$test->assertEquals(2,$table->find(),"IN TableTest nb");
+$table=new DBObj_TestValidation_TableTest;
+	$test->assertEquals(4,$table->find(),"IN TableTest nb");
 	$autre=new DBObj_TestValidation_AutreTable;
 	$test->assertEquals(3,$autre->find(),"IN AutreTable nb");
 
@@ -93,17 +84,9 @@ try {
 	}
 
 	$table=new DBObj_TestValidation_TableTest;
-	$test->assertEquals(2,$table->find(),"OUT TableTest nb");
+	$test->assertEquals(4,$table->find(),"OUT TableTest nb");
 	$autre=new DBObj_TestValidation_AutreTable;
 	$test->assertEquals(3,$autre->find(),"OUT AutreTable nb");
-
-	$connect->execute("TRUNCATE TABLE TestValidation_TableTest");
-	$connect->execute("TRUNCATE TABLE TestValidation_AutreTable");
-} catch(Exception $e) {
-	$connect->execute("TRUNCATE TABLE TestValidation_TableTest");
-	$connect->execute("TRUNCATE TABLE TestValidation_AutreTable");
-	throw $e;
-}
 //@CODE_ACTION@
 }
 
