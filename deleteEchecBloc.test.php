@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Test file write by SDK tool
-// --- Last modification: Date 18 November 2009 11:31:01 By  ---
+// --- Last modification: Date 05 January 2010 0:45:10 By  ---
 
 
 //@TABLES@
@@ -34,7 +34,6 @@ require_once('extensions/TestValidation/TrucTable.tbl.php');
 function TestValidation_deleteEchecBloc(&$test)
 {
 //@CODE_ACTION@
-global $connect;
 global $connect;
 $connect->execute("TRUNCATE TABLE TestValidation_AutreTable",true);
 $connect->execute("DELETE FROM TestValidation_TableTest",true);
