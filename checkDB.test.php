@@ -17,28 +17,32 @@
 //     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
-//  // table file write by SDK tool
-// --- Last modification: Date 06 January 2010 23:19:47 By  ---
+//  // Test file write by SDK tool
+// --- Last modification: Date 07 January 2010 0:10:43 By  ---
 
-require_once('CORE/DBObject.inc.php');
 
-class DBObj_TestValidation_TrucTable extends DBObj_Basic
+//@TABLES@
+require_once('extensions/TestValidation/SuperContact.tbl.php');
+//@TABLES@
+
+//@DESC@Tests sur la base de donnée et le SETUP
+//@PARAM@ 
+
+function TestValidation_checkDB(&$test)
 {
-	var $Title="";
-	var $tblname="TrucTable";
-	var $extname="TestValidation";
-	var $__table="TestValidation_TrucTable";
+//@CODE_ACTION@
+require_once('CORE/DBSetup.inc.php');
 
-	var $DefaultFields=array();
-	var $NbFieldsCheck=1;
-	var $Heritage="";
-	var $PosChild=-1;
+$DBobj=new DBObj_TestValidation_SuperContact;
+$setup=new DBObj_Setup($DBobj);
+$val=$setup->describeSQLTable();
 
-	var $number;
-	var $superTest;
-	var $machin;
-	var $__DBMetaDataField=array('number'=>array('description'=>'Nombre', 'type'=>0, 'notnull'=>false, 'params'=>array('Min'=>0, 'Max'=>1000)), 'superTest'=>array('description'=>'Super Test', 'type'=>10, 'notnull'=>false, 'params'=>array('TableName'=>'TestValidation_SuperTableTest')), 'machin'=>array('description'=>'Machin', 'type'=>9, 'notnull'=>false, 'params'=>array('TableName'=>'TestValidation_MachinTable', 'RefField'=>'truc')));
+echo "<!-- showCreateTable=\n$val -->";
 
+$val=$setup->CurrentContraints();
+
+echo "<!-- Contraints=\n".print_r($val,true)." -->";
+//@CODE_ACTION@
 }
 
 ?>

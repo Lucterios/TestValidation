@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Test file write by SDK tool
-// --- Last modification: Date 05 January 2010 0:45:10 By  ---
+// --- Last modification: Date 07 January 2010 0:31:21 By  ---
 
 
 //@TABLES@
@@ -40,6 +40,7 @@ $connect->execute("DELETE FROM TestValidation_TableTest",true);
 $connect->execute("INSERT INTO TestValidation_TableTest (id,value,name) VALUES (100,0,'ABC')",true);
 $connect->execute("INSERT INTO TestValidation_TableTest (id,value,name) VALUES (101,876.23,'VBC')",true);
 $connect->execute("INSERT INTO TestValidation_SuperTableTest (id,time,superId) VALUES (101,'00:00:00',101)",true);
+$connect->execute("INSERT INTO TestValidation_SuperTableTest (id,time,superId) VALUES (100,'01:03:00',100)",true);
 
 	$ttest=new DBObj_TestValidation_TableTest;
 	$test->assertEquals(2,$ttest->find(),"IN TableTest nb");

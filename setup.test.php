@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Test file write by SDK tool
-// --- Last modification: Date 18 November 2009 10:32:29 By  ---
+// --- Last modification: Date 06 January 2010 23:42:17 By  ---
 
 
 //@TABLES@
@@ -39,7 +39,7 @@ $connect->execute("INSERT INTO TestValidation_AutreTable (id,text,date,test) VAL
 
 $connect->execute("INSERT INTO TestValidation_SuperTableTest (id,time,superId) VALUES (100,'23:45:36',100)");
 $connect->execute("INSERT INTO TestValidation_TrucTable (id,number,superTest) VALUES (100,123,100)",true);
-$connect->execute("INSERT INTO TestValidation_TrucTable (id,number,superTest) VALUES (101,876,101)",true);
+$connect->execute("INSERT INTO TestValidation_TrucTable (id,number,superTest) VALUES (101,876,null)",true);
 $connect->execute("INSERT INTO TestValidation_TrucTable (id,number,superTest) VALUES (102,382,100)",true);
 
 $connect->execute("INSERT INTO TestValidation_MachinTable (id,mode,truc) VALUES (100,0,100)",true);
