@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // table file write by SDK tool
-// --- Last modification: Date 13 November 2008 21:23:40 By  ---
+// --- Last modification: Date 10 January 2010 13:22:28 By  ---
 
 require_once('CORE/DBObject.inc.php');
 
@@ -36,7 +36,9 @@ class DBObj_TestValidation_SuperTableTest extends DBObj_Basic
 
 	var $time;
 	var $truc;
-	var $__DBMetaDataField=array('time'=>array('description'=>'Heure', 'type'=>5, 'notnull'=>false, 'params'=>array()), 'truc'=>array('description'=>'Truc', 'type'=>9, 'notnull'=>false, 'params'=>array('TableName'=>'TestValidation_TrucTable', 'RefField'=>'superTest')));
+	var $virtual;
+	var $valuevirt;
+	var $__DBMetaDataField=array('time'=>array('description'=>'Heure', 'type'=>5, 'notnull'=>false, 'params'=>array()), 'truc'=>array('description'=>'Truc', 'type'=>9, 'notnull'=>false, 'params'=>array('TableName'=>'TestValidation_TrucTable', 'RefField'=>'superTest')), 'virtual'=>array('description'=>'Champ virtuel', 'type'=>13, 'notnull'=>false, 'params'=>array('MethodGet'=>'getVirtuel', 'MethodSet'=>'setVirtuel', 'Min'=>0, 'Max'=>10000, 'Prec'=>3)), 'valuevirt'=>array('description'=>'Valeur du virtuel', 'type'=>0, 'notnull'=>false, 'params'=>array('Min'=>0, 'Max'=>10000)));
 
 }
 

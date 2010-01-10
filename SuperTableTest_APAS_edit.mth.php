@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Method file write by SDK tool
-// --- Last modification: Date 20 March 2009 10:57:23 By  ---
+// --- Last modification: Date 10 January 2010 12:53:15 By  ---
 
 require_once('CORE/xfer_exception.inc.php');
 require_once('CORE/rights.inc.php');
@@ -37,8 +37,8 @@ function SuperTableTest_APAS_edit(&$self,$posX,$posY,$xfer_result)
 //@CODE_ACTION@
 $xfer_result=$self->Super->edit($posX, $posY, $xfer_result);
 $posY+=6;
-$xfer_result->setDBObject($self,'1Virtuel'.SEP_SHOW.'#virtualData',false,$posY++,$posX);
 $xfer_result->setDBObject($self,"time",false,$posY++,$posX);
+$xfer_result->setDBObject($self,"virtual",false,$posY++,$posX);
 return $xfer_result;
 //@CODE_ACTION@
 }

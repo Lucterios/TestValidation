@@ -17,37 +17,47 @@
 //     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
-//  // Method file write by SDK tool
-// --- Last modification: Date 10 January 2010 13:29:31 By  ---
+//  // Action file write by SDK tool
+// --- Last modification: Date 10 January 2010 14:42:45 By  ---
 
 require_once('CORE/xfer_exception.inc.php');
 require_once('CORE/rights.inc.php');
 
 //@TABLES@
-require_once('extensions/TestValidation/TrucTable.tbl.php');
 //@TABLES@
+//@XFER:custom
+require_once('CORE/xfer_custom.inc.php');
+//@XFER:custom@
 
-//@DESC@Voir un TrucTable
-//@PARAM@ posX
-//@PARAM@ posY
-//@PARAM@ xfer_result
 
-function TrucTable_APAS_show(&$self,$posX,$posY,$xfer_result)
+//@DESC@Grille spéciale
+//@PARAM@ 
+
+
+//@LOCK:0
+
+function grilleSpecial($Params)
 {
+try {
+$xfer_result=&new Xfer_Container_Custom("TestValidation","grilleSpecial",$Params);
+$xfer_result->Caption="Grille spéciale";
 //@CODE_ACTION@
-$xfer_result->setDBObject($self,"number",true,$posY++,$posX);
-$xfer_result->setDBObject($self,"superTest",true,$posY++,$posX);
-$xfer_result->setDBObject($self,"nbMachin",true,$posY++,$posX);
-$lbl = new Xfer_Comp_LabelForm("machinlbl");
-$lbl->setValue("{[bold]}Machin{[/bold]}");
-$lbl->setLocation($posX,$posY++);
-$xfer_result->addComponent($lbl);
-$machin=$self->getField("machin");
-$grid = $machin->getGrid();
-$grid->setLocation($posX+1,$posY++);
+global $connect;
+$queryId = $connect->execute("SHOW FULL FIELDS FROM `TestValidation_SuperTableTest`");
+
+$grid=new Xfer_Comp_Grid('special');
+$grid->addHeader("COLUMNS.Field","Nom du champs");
+$grid->addHeader("COLUMNS.Type","Type");
+$grid->addHeader("COLUMNS.Null","Obligatoire?");
+$grid->setDBRows($queryId,"COLUMNS.Field",$Params);
+$grid->setsize(200,300);
 $xfer_result->addComponent($grid);
-return $xfer_result;
+$xfer_result->addAction(new Xfer_Action('Fin','close.png'));
 //@CODE_ACTION@
+}catch(Exception $e) {
+	throw $e;
+}
+return $xfer_result;
 }
 
 ?>

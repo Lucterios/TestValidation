@@ -18,35 +18,22 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Method file write by SDK tool
-// --- Last modification: Date 10 January 2010 13:29:31 By  ---
+// --- Last modification: Date 10 January 2010 1:20:03 By  ---
 
 require_once('CORE/xfer_exception.inc.php');
 require_once('CORE/rights.inc.php');
 
 //@TABLES@
-require_once('extensions/TestValidation/TrucTable.tbl.php');
+require_once('extensions/TestValidation/SuperTableTest.tbl.php');
 //@TABLES@
 
-//@DESC@Voir un TrucTable
-//@PARAM@ posX
-//@PARAM@ posY
-//@PARAM@ xfer_result
+//@DESC@
+//@PARAM@ 
 
-function TrucTable_APAS_show(&$self,$posX,$posY,$xfer_result)
+function SuperTableTest_APAS_getVirtuel(&$self)
 {
 //@CODE_ACTION@
-$xfer_result->setDBObject($self,"number",true,$posY++,$posX);
-$xfer_result->setDBObject($self,"superTest",true,$posY++,$posX);
-$xfer_result->setDBObject($self,"nbMachin",true,$posY++,$posX);
-$lbl = new Xfer_Comp_LabelForm("machinlbl");
-$lbl->setValue("{[bold]}Machin{[/bold]}");
-$lbl->setLocation($posX,$posY++);
-$xfer_result->addComponent($lbl);
-$machin=$self->getField("machin");
-$grid = $machin->getGrid();
-$grid->setLocation($posX+1,$posY++);
-$xfer_result->addComponent($grid);
-return $xfer_result;
+return $self->valuevirt/100;
 //@CODE_ACTION@
 }
 

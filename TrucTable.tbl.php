@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // table file write by SDK tool
-// --- Last modification: Date 06 January 2010 23:19:47 By  ---
+// --- Last modification: Date 10 January 2010 0:36:48 By  ---
 
 require_once('CORE/DBObject.inc.php');
 
@@ -36,8 +36,9 @@ class DBObj_TestValidation_TrucTable extends DBObj_Basic
 
 	var $number;
 	var $superTest;
+	var $nbMachin;
 	var $machin;
-	var $__DBMetaDataField=array('number'=>array('description'=>'Nombre', 'type'=>0, 'notnull'=>false, 'params'=>array('Min'=>0, 'Max'=>1000)), 'superTest'=>array('description'=>'Super Test', 'type'=>10, 'notnull'=>false, 'params'=>array('TableName'=>'TestValidation_SuperTableTest')), 'machin'=>array('description'=>'Machin', 'type'=>9, 'notnull'=>false, 'params'=>array('TableName'=>'TestValidation_MachinTable', 'RefField'=>'truc')));
+	var $__DBMetaDataField=array('number'=>array('description'=>'Nombre', 'type'=>0, 'notnull'=>false, 'params'=>array('Min'=>0, 'Max'=>1000)), 'superTest'=>array('description'=>'Super Test', 'type'=>10, 'notnull'=>false, 'params'=>array('TableName'=>'TestValidation_SuperTableTest')), 'nbMachin'=>array('description'=>'Nombre de machin', 'type'=>11, 'notnull'=>false, 'params'=>array('Function'=>'TestValidation_FCT_TrucTable_APAS_NbMachin')), 'machin'=>array('description'=>'Machin', 'type'=>9, 'notnull'=>false, 'params'=>array('TableName'=>'TestValidation_MachinTable', 'RefField'=>'truc')));
 
 }
 

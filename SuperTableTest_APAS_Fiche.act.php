@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Action file write by SDK tool
-// --- Last modification: Date 23 November 2008 12:47:52 By  ---
+// --- Last modification: Date 10 January 2010 13:01:33 By  ---
 
 require_once('CORE/xfer_exception.inc.php');
 require_once('CORE/rights.inc.php');
@@ -32,6 +32,7 @@ require_once('CORE/xfer_custom.inc.php');
 
 
 //@DESC@Fiche d'un SuperTableTest
+//@PARAM@ 
 //@INDEX:SuperTableTest
 
 
@@ -52,6 +53,7 @@ $xfer_result->m_context['TABLE_NAME']=$self->__table;
 $xfer_result->m_context['RECORD_ID']=$self->id;
 //@CODE_ACTION@
 $xfer_result=$self->show(1,0,$xfer_result);
+$xfer_result->addAction($self->NewAction('edit','edit.png','AddModify',FORMTYPE_MODAL,CLOSE_YES));
 $xfer_result->addAction(new Xfer_Action("_Fermer", "close.png"));
 //@CODE_ACTION@
 	$xfer_result->setCloseAction(new Xfer_Action('unlock','','CORE','UNLOCK',FORMTYPE_MODAL,CLOSE_YES,SELECT_NONE));
