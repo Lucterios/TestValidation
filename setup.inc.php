@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // setup file write by SDK tool
-// --- Last modification: Date 10 January 2010 14:44:55 By  ---
+// --- Last modification: Date 10 January 2010 15:36:15 By  ---
 
 $extention_name="TestValidation";
 $extention_description="TestValidation";
@@ -28,14 +28,14 @@ $extention_titre="TestValidation";
 $extension_libre=true;
 
 $version_max=0;
-$version_min=3;
-$version_release=93;
-$version_build=322;
+$version_min=4;
+$version_release=1;
+$version_build=336;
 
 $depencies=array();
-$depencies[0] = new Param_Depencies("CORE", 0, 93, 0, 90, false);
+$depencies[0] = new Param_Depencies("CORE", 1, 2, 1, 1, false);
 $depencies[1] = new Param_Depencies("exemple", 0, 10, 0, 1, true);
-$depencies[2] = new Param_Depencies("org_lucterios_contacts", 0, 93, 0, 91, false);
+$depencies[2] = new Param_Depencies("org_lucterios_contacts", 1, 2, 1, 1, false);
 
 $rights=array();
 $rights[0] = new Param_Rigth("Action Simple",50);
