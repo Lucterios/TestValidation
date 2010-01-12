@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // setup file write by SDK tool
-// --- Last modification: Date 10 January 2010 15:36:15 By  ---
+// --- Last modification: Date 11 January 2010 23:27:10 By  ---
 
 $extention_name="TestValidation";
 $extention_description="TestValidation";
@@ -29,8 +29,8 @@ $extension_libre=true;
 
 $version_max=0;
 $version_min=4;
-$version_release=1;
-$version_build=336;
+$version_release=2;
+$version_build=345;
 
 $depencies=array();
 $depencies[0] = new Param_Depencies("CORE", 1, 2, 1, 1, false);
@@ -98,8 +98,9 @@ $actions[36] = new Param_Action("Fiche d'un TrucTable", "TrucTable_APAS_Fiche", 
 $actions[37] = new Param_Action("Lister des TrucTable", "TrucTable_APAS_List", 0);
 $actions[38] = new Param_Action("Téléchargement", "UpAndDownLoad", 0);
 $actions[39] = new Param_Action("Grille spéciale", "grilleSpecial", 0);
-$actions[40] = new Param_Action("", "selectContact", 0);
-$actions[41] = new Param_Action("Traitement long", "traitementLong", 0);
+$actions[40] = new Param_Action("menuTab", "menuTab", 0);
+$actions[41] = new Param_Action("", "selectContact", 0);
+$actions[42] = new Param_Action("Traitement long", "traitementLong", 0);
 
 $params=array();
 
