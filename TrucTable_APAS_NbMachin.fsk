@@ -17,13 +17,14 @@
 -- 
 -- 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 --  -- Stocked file write by SDK tool
--- Last modification: Date 10 January 2010 0:09:36 By  ---
+-- Last modification: Date 18 January 2010 20:07:45 By  ---
 
 
 -- @DESC@Retourne le nombre de machin
 -- @PARAM@ id int(10)
+-- @PARAM@ val varchar(10)
 
-CREATE FUNCTION TestValidation_FCT_TrucTable_APAS_NbMachin(id int(10))
+CREATE FUNCTION TestValidation_FCT_TrucTable_APAS_NbMachin(id int(10),val varchar(10))
 RETURNS TEXT
 BEGIN
 DECLARE result TEXT DEFAULT '';
