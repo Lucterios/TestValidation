@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Action file write by SDK tool
-// --- Last modification: Date 10 January 2010 14:42:45 By  ---
+// --- Last modification: Date 03 February 2010 9:22:12 By  ---
 
 require_once('CORE/xfer_exception.inc.php');
 require_once('CORE/rights.inc.php');
@@ -43,16 +43,21 @@ $xfer_result=&new Xfer_Container_Custom("TestValidation","grilleSpecial",$Params
 $xfer_result->Caption="Grille spéciale";
 //@CODE_ACTION@
 global $connect;
-$queryId = $connect->execute("SHOW FULL FIELDS FROM `TestValidation_SuperTableTest`");
+$queryId = $connect->execute("SELECT * FROM mysql.help_topic");
 
 $grid=new Xfer_Comp_Grid('special');
-$grid->addHeader("COLUMNS.Field","Nom du champs");
-$grid->addHeader("COLUMNS.Type","Type");
-$grid->addHeader("COLUMNS.Null","Obligatoire?");
-$grid->setDBRows($queryId,"COLUMNS.Field",$Params);
+$grid->addHeader("help_topic.help_topic_id","Id");
+$grid->addHeader("help_topic.name","Nom");
+$grid->addHeader("help_topic.help_category_id","Category");
+$grid->addHeader("help_topic.description","Description");
+$grid->addHeader("help_topic.example","Example");
+$grid->addHeader("help_topic.url","Url");
+$grid->setDBRows($queryId,"help_topic.help_topic_id",$Params);
 $grid->setsize(200,300);
 $xfer_result->addComponent($grid);
 $xfer_result->addAction(new Xfer_Action('Fin','close.png'));
+
+logAutre("attributs:".$grid->_attributs()." mPageMax:".$grid->mPageMax);
 //@CODE_ACTION@
 }catch(Exception $e) {
 	throw $e;
