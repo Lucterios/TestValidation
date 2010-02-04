@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // table file write by SDK tool
-// --- Last modification: Date 10 January 2010 14:59:05 By  ---
+// --- Last modification: Date 04 February 2010 8:40:22 By  ---
 
 require_once('CORE/DBObject.inc.php');
 
@@ -37,7 +37,7 @@ class DBObj_TestValidation_AutreTable extends DBObj_Basic
 	var $text;
 	var $date;
 	var $test;
-	var $__DBMetaDataField=array('text'=>array('description'=>'Text', 'type'=>2, 'notnull'=>false, 'params'=>array('Size'=>50, 'Multi'=>false)), 'date'=>array('description'=>'Date', 'type'=>4, 'notnull'=>false, 'params'=>array()), 'test'=>array('description'=>'Test', 'type'=>10, 'notnull'=>false, 'params'=>array('TableName'=>'TestValidation_TableTest')));
+	var $__DBMetaDataField=array('text'=>array('description'=>'Text', 'type'=>2, 'notnull'=>false, 'params'=>array('Size'=>50, 'Multi'=>false)), 'date'=>array('description'=>'Date', 'type'=>4, 'notnull'=>false, 'params'=>array()), 'test'=>array('description'=>'Test', 'type'=>10, 'notnull'=>true, 'params'=>array('TableName'=>'TestValidation_TableTest')));
 
 }
 
