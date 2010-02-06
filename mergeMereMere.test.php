@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Test file write by SDK tool
-// --- Last modification: Date 18 November 2009 11:15:12 By  ---
+// --- Last modification: Date 05 February 2010 14:11:21 By  ---
 
 
 //@TABLES@
@@ -92,7 +92,7 @@ $connect->execute("INSERT INTO TestValidation_SuperTableTest (id,time,superId) V
 	$tructable->fetch();
 	$test->assertEquals('101',$tructable->id,"OUT TrucTable id 2");
 	$test->assertEquals('876',$tructable->number,"OUT TrucTable number 2");
-	$test->assertEquals('100',$tructable->superTest,"OUT TrucTable superTest 2");
+	$test->assertEquals(null,$tructable->superTest,"OUT TrucTable superTest 2");
 	$tructable->fetch();
 	$test->assertEquals('102',$tructable->id,"OUT TrucTable id 2");
 	$test->assertEquals('382',$tructable->number,"OUT TrucTable number 2");
