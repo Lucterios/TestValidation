@@ -17,7 +17,7 @@
 -- 
 -- 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 --  -- Stocked file write by SDK tool
--- Last modification: Date 18 January 2010 20:07:45 By  ---
+-- Last modification: Date 24 March 2010 21:56:20 By  ---
 
 
 -- @DESC@Retourne le nombre de machin
@@ -26,6 +26,7 @@
 
 CREATE FUNCTION TestValidation_FCT_TrucTable_APAS_NbMachin(id int(10),val varchar(10))
 RETURNS TEXT
+READS SQL DATA
 BEGIN
 DECLARE result TEXT DEFAULT '';
 -- @CODE_ACTION@
