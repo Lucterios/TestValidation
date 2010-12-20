@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Test file write by SDK tool
-// --- Last modification: Date 18 November 2009 11:28:14 By  ---
+// --- Last modification: Date 20 December 2010 17:15:16 By  ---
 
 
 //@TABLES@
@@ -75,9 +75,9 @@ $connect->execute("INSERT INTO TestValidation_SuperTableTest (id,time,superId) V
 	$machin->fetch();
 	$machin->fetch();
 	$machin->fetch();
-	$test->assertEquals('101',$machin->id,"OUT MachinTable id 1");
+	$test->assertEquals('111',$machin->id,"OUT MachinTable id 1");
 	$machin->fetch();
-	$test->assertEquals('103',$machin->id,"OUT MachinTable id 2");
+	$test->assertEquals('113',$machin->id,"OUT MachinTable id 2");
 //@CODE_ACTION@
 }
 

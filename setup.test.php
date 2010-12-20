@@ -18,7 +18,7 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Test file write by SDK tool
-// --- Last modification: Date 06 January 2010 23:42:17 By  ---
+// --- Last modification: Date 20 December 2010 17:09:11 By  ---
 
 
 //@TABLES@
@@ -42,10 +42,10 @@ $connect->execute("INSERT INTO TestValidation_TrucTable (id,number,superTest) VA
 $connect->execute("INSERT INTO TestValidation_TrucTable (id,number,superTest) VALUES (101,876,null)",true);
 $connect->execute("INSERT INTO TestValidation_TrucTable (id,number,superTest) VALUES (102,382,100)",true);
 
-$connect->execute("INSERT INTO TestValidation_MachinTable (id,mode,truc) VALUES (100,0,100)",true);
-$connect->execute("INSERT INTO TestValidation_MachinTable (id,mode,truc) VALUES (101,2,101)",true);
-$connect->execute("INSERT INTO TestValidation_MachinTable (id,mode,truc) VALUES (102,1,100)",true);
-$connect->execute("INSERT INTO TestValidation_MachinTable (id,mode,truc) VALUES (103,1,101)",true);
+$connect->execute("INSERT INTO TestValidation_MachinTable (id,mode,truc) VALUES (110,0,100)",true);
+$connect->execute("INSERT INTO TestValidation_MachinTable (id,mode,truc) VALUES (111,2,101)",true);
+$connect->execute("INSERT INTO TestValidation_MachinTable (id,mode,truc) VALUES (112,1,100)",true);
+$connect->execute("INSERT INTO TestValidation_MachinTable (id,mode,truc) VALUES (113,1,101)",true);
 //@CODE_ACTION@
 }
 
