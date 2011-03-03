@@ -17,8 +17,8 @@
 // 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // 
 // 		Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
-// Method file write by SDK tool
-// --- Last modification: Date 02 March 2011 19:12:04 By  ---
+// Action file write by SDK tool
+// --- Last modification: Date 02 March 2011 19:10:27 By  ---
 
 require_once('CORE/xfer_exception.inc.php');
 require_once('CORE/rights.inc.php');
@@ -26,22 +26,36 @@ require_once('CORE/rights.inc.php');
 //@TABLES@
 require_once('extensions/TestValidation/SuperTableTest.tbl.php');
 //@TABLES@
+//@XFER:print
+require_once('CORE/xfer_printing.inc.php');
+//@XFER:print@
 
-//@DESC@getList de SuperTableTest
+
+//@DESC@Impression
 //@PARAM@ 
+//@INDEX:SuperTableTest
 
-function SuperTableTest_APAS_getGrid(&$self)
+
+//@LOCK:0
+
+function SuperTableTest_APAS_print($Params)
 {
+$self=new DBObj_TestValidation_SuperTableTest();
+$SuperTableTest=getParams($Params,"SuperTableTest",-1);
+if ($SuperTableTest>=0) $self->get($SuperTableTest);
+try {
+$xfer_result=&new Xfer_Container_Print("TestValidation","SuperTableTest_APAS_print",$Params);
+$xfer_result->Caption="Impression";
 //@CODE_ACTION@
-$grid = new Xfer_Comp_Grid("SuperTableTest");
-$grid->setDBObject($self, array('name','value','virtual'));
-$grid->addAction($self->newAction("_Editer", "edit.png", "Fiche",FORMTYPE_MODAL,CLOSE_NO, SELECT_SINGLE));
-$grid->addAction($self->newAction("_Supprimer", "suppr.png", "Del", FORMTYPE_MODAL,CLOSE_NO, SELECT_SINGLE));
-$grid->addAction($self->newAction("_Ajouter", "add.png", "AddModify",FORMTYPE_MODAL,CLOSE_NO, SELECT_NONE));
-$grid->addAction($self->NewAction('_Impression','print.png','print',FORMTYPE_MODAL,CLOSE_NO,SELECT_SINGLE));
-$grid->setSize(200,750);
-return $grid;
+$xfer_result->withTextExport=1;
+if ($xfer_result->showSelector(0)) {
+	$self->PrintReport($xfer_result,"rapport","Rapport",WRITE_MODE_WRITE,$self->id);
+}
 //@CODE_ACTION@
+}catch(Exception $e) {
+	throw $e;
+}
+return $xfer_result;
 }
 
 ?>
