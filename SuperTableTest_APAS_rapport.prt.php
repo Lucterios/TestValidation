@@ -18,7 +18,7 @@
 // 
 // 		Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 // Printing file write by SDK tool
-// --- Last modification: Date 02 March 2011 22:09:39 By  ---
+// --- Last modification: Date 20 October 2011 22:14:10 By  ---
 
 require_once('CORE/xfer_exception.inc.php');
 require_once('CORE/rights.inc.php');
@@ -30,38 +30,37 @@ require_once('extensions/TestValidation/SuperTableTest.tbl.php');
 //@TABLES@
 //@MODEL_DEFAULT@
 $MODEL_DEFAULT="
-<model margin_right='10.0' margin_left='10.0' margin_bottom='10.0' margin_top='10.0' page_width='210.0' page_height='297.0'>
-<header extent='0.0' name='before'/>
-<bottom extent='0.0' name='after'/>
-<left extent='0.0' name='start'/>
-<rigth extent='0.0' name='end'/>
-<body extent='0.0' data='' name='body'>
-<text height='20.0' width='100.0' top='50.0' left='10.0' padding='1.0' spacing='0.0' border_color='black' border_style='' border_width='0.2' text_align='start' line_height='12' font_family='sans-serif' font_weight='' font_size='12'>
+<model margin_right=#&39;10.0#&39; margin_left=#&39;10.0#&39; margin_bottom=#&39;10.0#&39; margin_top=#&39;10.0#&39; page_width=#&39;210.0#&39; page_height=#&39;297.0#&39;>
+<header extent=#&39;0.0#&39; name=#&39;before#&39;/>
+<bottom extent=#&39;0.0#&39; name=#&39;after#&39;/>
+<left extent=#&39;0.0#&39; name=#&39;start#&39;/>
+<rigth extent=#&39;0.0#&39; name=#&39;end#&39;/>
+<body extent=#&39;0.0#&39; data=#&39;#&39; name=#&39;body#&39;>
+<text height=#&39;20.0#&39; width=#&39;100.0#&39; top=#&39;50.0#&39; left=#&39;10.0#&39; padding=#&39;1.0#&39; spacing=#&39;0.0#&39; border_color=#&39;black#&39; border_style=#&39;#&39; border_width=#&39;0.2#&39; text_align=#&39;start#&39; line_height=#&39;12#&39; font_family=#&39;sans-serif#&39; font_weight=#&39;#&39; font_size=#&39;12#&39;>
 name=[{/DATA/name}]{[newline]}value=[{/DATA/value}]{[newline]}time=[{/DATA/time}]
 </text>
-<table height='50.0' width='150.0' top='100.0' left='20.0' padding='1.0' spacing='0.0' border_color='black' border_style='' border_width='0.2'>
-<columns width='75.0' data=''>
-<cell data='' display_align='center' border_color='black' border_style='solid' border_width='0.2' text_align='start' line_height='12' font_family='sans-serif' font_weight='' font_size='12'>
+<table height=#&39;50.0#&39; width=#&39;150.0#&39; top=#&39;100.0#&39; left=#&39;20.0#&39; padding=#&39;1.0#&39; spacing=#&39;0.0#&39; border_color=#&39;black#&39; border_style=#&39;#&39; border_width=#&39;0.2#&39;>
+<columns width=#&39;75.0#&39; data=#&39;#&39;>
+<cell data=#&39;#&39; display_align=#&39;center#&39; border_color=#&39;black#&39; border_style=#&39;solid#&39; border_width=#&39;0.2#&39; text_align=#&39;start#&39; line_height=#&39;12#&39; font_family=#&39;sans-serif#&39; font_weight=#&39;#&39; font_size=#&39;12#&39;>
 Number
 </cell>
 </columns>
-<columns width='75.0' data=''>
-<cell data='' display_align='center' border_color='black' border_style='Normal' border_width='0.2' text_align='start' line_height='12' font_family='sans-serif' font_weight='' font_size='12'>
+<columns width=#&39;75.0#&39; data=#&39;#&39;>
+<cell data=#&39;#&39; display_align=#&39;center#&39; border_color=#&39;black#&39; border_style=#&39;Normal#&39; border_width=#&39;0.2#&39; text_align=#&39;start#&39; line_height=#&39;12#&39; font_family=#&39;sans-serif#&39; font_weight=#&39;#&39; font_size=#&39;12#&39;>
 Nb&#160;Machin
 </cell>
 </columns>
-<rows data='/DATA/truc'>
-<cell data='' display_align='center' border_color='black' border_style='solid' border_width='0.2' text_align='start' line_height='12' font_family='sans-serif' font_weight='' font_size='12'>
+<rows data=#&39;/DATA/truc#&39;>
+<cell data=#&39;#&39; display_align=#&39;center#&39; border_color=#&39;black#&39; border_style=#&39;solid#&39; border_width=#&39;0.2#&39; text_align=#&39;start#&39; line_height=#&39;12#&39; font_family=#&39;sans-serif#&39; font_weight=#&39;#&39; font_size=#&39;12#&39;>
 [{number}]
 </cell>
-<cell data='' display_align='center' border_color='black' border_style='solid' border_width='0.2' text_align='start' line_height='12' font_family='sans-serif' font_weight='' font_size='12'>
+<cell data=#&39;#&39; display_align=#&39;center#&39; border_color=#&39;black#&39; border_style=#&39;solid#&39; border_width=#&39;0.2#&39; text_align=#&39;start#&39; line_height=#&39;12#&39; font_family=#&39;sans-serif#&39; font_weight=#&39;#&39; font_size=#&39;12#&39;>
 [{nbMachin}]
 </cell>
 </rows>
 </table>
 </body>
 </model>
-
 ";
 //@MODEL_DEFAULT_END@
 
@@ -75,7 +74,7 @@ function TestValidation_APAS_SuperTableTest_APAS_rapport_getXmlData($Params=arra
 {
 if (($ret=checkParams("TestValidation", "rapport",$Params ,"SuperTableTest"))!=null)
 	return $ret;
-$SuperTableTest=getParams($Params,"SuperTableTest");
+$SuperTableTest=getParams($Params,"SuperTableTest",0);
 $self=new DBObj_TestValidation_SuperTableTest();
 $xml_data='';
 //@CODE_ACTION@
@@ -93,16 +92,26 @@ if ($SuperTableTest>0) {
 	$xml_data.="	</time>";
 
 	$truc=$self->getField('truc');
+	$xml_data_item="";
 	while($truc->fetch()) {
-		$xml_data.="	<truc>";
-		$xml_data.="		<number>";
-		$xml_data.=$truc->number;
-		$xml_data.="		</number>";
-		$xml_data.="		<nbMachin>";
-		$xml_data.=$truc->nbMachin;
-		$xml_data.="		</nbMachin>";
-		$xml_data.="	</truc>";
+		$xml_data_item.="	<truc>";
+		$xml_data_item.="		<number>";
+		$xml_data_item.=$truc->number;
+		$xml_data_item.="		</number>";
+		$xml_data_item.="		<nbMachin>";
+		$xml_data_item.=$truc->nbMachin;
+		$xml_data_item.="		</nbMachin>";
+		$xml_data_item.="	</truc>";
 	}
+	if ($xml_data_item=='') {
+		$xml_data_item.="	<truc>";
+		$xml_data_item.="		<number>";
+		$xml_data_item.="		</number>";
+		$xml_data_item.="		<nbMachin>";
+		$xml_data_item.="		</nbMachin>";
+		$xml_data_item.="	</truc>";
+	}
+	$xml_data.=$xml_data_item;
 }
 else {
 	$xml_data.="	<name>AAAA</name>";
