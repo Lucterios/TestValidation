@@ -18,7 +18,7 @@
 // 
 // 		Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 // setup file write by SDK tool
-// --- Last modification: Date 10 November 2011 20:13:28 By  ---
+// --- Last modification: Date 11 November 2011 10:54:20 By  ---
 
 $extention_name="TestValidation";
 $extention_description="TestValidation";
@@ -30,7 +30,7 @@ $extension_libre=true;
 $version_max=0;
 $version_min=5;
 $version_release=1;
-$version_build=435;
+$version_build=436;
 
 $depencies=array();
 $depencies[0] = new Param_Depencies("CORE", 1, 3, 1, 3, false);
@@ -107,11 +107,12 @@ $actions[43] = new Param_Action("Traitement long", "traitementLong", 0);
 $params=array();
 
 $extend_tables=array();
-$extend_tables["AutreTable"] = array("TestValidation.AutreTable","",array());
-$extend_tables["MachinTable"] = array("TestValidation.MachinTable","",array());
-$extend_tables["SuperContact"] = array("TestValidation.SuperContact","",array());
-$extend_tables["SuperTableTest"] = array("TestValidation.SuperTableTest","",array());
+$extend_tables["AutreTable"] = array("TestValidation.AutreTable","",array("TestValidation_TableTest"=>"test",));
+$extend_tables["MachinTable"] = array("TestValidation.MachinTable","",array("TestValidation_TrucTable"=>"truc",));
+$extend_tables["SuperContact"] = array("Super-contact","org_lucterios_contacts/personnePhysique",array());
+$extend_tables["SuperTableTest"] = array("Super table test","TestValidation/TableTest",array());
 $extend_tables["TableTest"] = array("TestValidation.TableTest","",array());
-$extend_tables["TrucTable"] = array("TestValidation.TrucTable","",array());
+$extend_tables["TrucTable"] = array("TestValidation.TrucTable","",array("TestValidation_SuperTableTest"=>"superTest",));
+$signals=array();
 
 ?>
