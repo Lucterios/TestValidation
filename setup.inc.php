@@ -18,7 +18,7 @@
 // 
 // 		Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 // setup file write by SDK tool
-// --- Last modification: Date 20 October 2011 22:28:48 By  ---
+// --- Last modification: Date 10 November 2011 20:13:28 By  ---
 
 $extention_name="TestValidation";
 $extention_description="TestValidation";
@@ -28,14 +28,14 @@ $extention_titre="TestValidation";
 $extension_libre=true;
 
 $version_max=0;
-$version_min=4;
-$version_release=4;
-$version_build=392;
+$version_min=5;
+$version_release=1;
+$version_build=435;
 
 $depencies=array();
-$depencies[0] = new Param_Depencies("CORE", 1, 2, 1, 1, false);
+$depencies[0] = new Param_Depencies("CORE", 1, 3, 1, 3, false);
 $depencies[1] = new Param_Depencies("exemple", 0, 10, 0, 1, true);
-$depencies[2] = new Param_Depencies("org_lucterios_contacts", 1, 2, 1, 1, false);
+$depencies[2] = new Param_Depencies("org_lucterios_contacts", 1, 3, 1, 3, false);
 
 $rights=array();
 $rights[0] = new Param_Rigth("Action Simple",50);
@@ -50,12 +50,13 @@ $menus[5] = new Param_Menu("_Manageur", "E_rreurs", "TableTest_APAS_errorManager
 $menus[6] = new Param_Menu("_Table", "E_rreurs", "TableTest_APAS_ErrorInTable", "", "", 20 , 0, "");
 $menus[7] = new Param_Menu("_Nouveau composants", "Validation", "NewComponent", "", "", 30 , 0, "");
 $menus[8] = new Param_Menu("Veroux", "Validation", "TableTest_APAS_veroux", "", "", 40 , 1, "");
-$menus[9] = new Param_Menu("Recherche", "Validation", "SuperTableTest_APAS_Search", "", "", 60 , 0, "");
-$menus[10] = new Param_Menu("Liste", "Validation", "SuperTableTest_APAS_List", "", "", 61 , 0, "");
+$menus[9] = new Param_Menu("Recherche (non-modal)", "Validation", "SuperTableTest_APAS_Search", "", "", 60 , 0, "");
+$menus[10] = new Param_Menu("Liste", "Validation", "SuperTableTest_APAS_List", "", "", 62 , 0, "");
 $menus[11] = new Param_Menu("Téléchargement", "Validation", "UpAndDownLoad", "", "", 70 , 1, "");
 $menus[12] = new Param_Menu("Selection de contacts", "Validation", "selectContact", "", "", 80 , 0, "");
 $menus[13] = new Param_Menu("Traitement", "_Evenement", "traitementLong", "", "", 30 , 1, "");
 $menus[14] = new Param_Menu("Grille spéciale", "Validation", "grilleSpecial", "", "", 100 , 1, "Grille spéciale");
+$menus[15] = new Param_Menu("Recherche (modal)", "Validation", "SuperTableTest_APAS_Search", "", "", 61 , 1, "");
 
 $actions=array();
 $actions[0] = new Param_Action("Fermeture de l'action", "CloseEvenement", 0);
@@ -106,11 +107,11 @@ $actions[43] = new Param_Action("Traitement long", "traitementLong", 0);
 $params=array();
 
 $extend_tables=array();
-$extend_tables["AutreTable"] = array("TestValidation.AutreTable","",array("TestValidation_TableTest"=>"test",));
-$extend_tables["MachinTable"] = array("TestValidation.MachinTable","",array("TestValidation_TrucTable"=>"truc",));
-$extend_tables["SuperContact"] = array("Super-contact","org_lucterios_contacts/personnePhysique",array());
-$extend_tables["SuperTableTest"] = array("Super table test","TestValidation/TableTest",array());
+$extend_tables["AutreTable"] = array("TestValidation.AutreTable","",array());
+$extend_tables["MachinTable"] = array("TestValidation.MachinTable","",array());
+$extend_tables["SuperContact"] = array("TestValidation.SuperContact","",array());
+$extend_tables["SuperTableTest"] = array("TestValidation.SuperTableTest","",array());
 $extend_tables["TableTest"] = array("TestValidation.TableTest","",array());
-$extend_tables["TrucTable"] = array("TestValidation.TrucTable","",array("TestValidation_SuperTableTest"=>"superTest",));
+$extend_tables["TrucTable"] = array("TestValidation.TrucTable","",array());
 
 ?>

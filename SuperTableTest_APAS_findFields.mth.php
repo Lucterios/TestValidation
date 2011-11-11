@@ -18,26 +18,27 @@
 // 
 // 	Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 //  // Method file write by SDK tool
-// --- Last modification: Date 23 November 2008 12:17:02 By  ---
+// --- Last modification: Date 23 November 2008 13:16:41 By  ---
 
 require_once('CORE/xfer_exception.inc.php');
 require_once('CORE/rights.inc.php');
 
 //@TABLES@
+require_once('extensions/TestValidation/MachinTable.tbl.php');
 require_once('extensions/TestValidation/TableTest.tbl.php');
+require_once('extensions/TestValidation/TrucTable.tbl.php');
+require_once('extensions/TestValidation/SuperTableTest.tbl.php');
 //@TABLES@
 
-//@DESC@Recherche un TableTest
+//@DESC@Recherche un SuperTableTest
 //@PARAM@ posY
 //@PARAM@ simple
 //@PARAM@ xfer_result
 
-function TableTest_APAS_finder(&$self,$posY,$simple,$xfer_result)
+function SuperTableTest_APAS_findFields(&$self)
 {
 //@CODE_ACTION@
-$xfer_result->setDBSearch($self,"name",$posY++);
-$xfer_result->setDBSearch($self,"value",$posY++);
-return $xfer_result;
+return array("name","value","time","truc[number]","truc[machin[mode]]");
 //@CODE_ACTION@
 }
 

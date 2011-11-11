@@ -21,8 +21,11 @@
 // --- Last modification: Date 11 January 2010 21:44:31 By  ---
 
 //@BEGIN@
-function TestValidation_menuTab(){
-	return new Xfer_Menu_Item("menu_validation",'Exemple état','image.png','TestValidation',"menuTab",0,"","");
+function TestValidation_APAS_menuTab(&$menuTabs,$xfer){
+	$new_Menu=new Xfer_Menu_Item("menu_validation",'Exemple état','image.png','TestValidation',"menuTab",0,"","");
+	if ($xfer->checkActionRigth($new_Menu))
+		$menuTabs->addSubMenu($new_Menu);
+	return true;
 }
 //@END@
 ?>

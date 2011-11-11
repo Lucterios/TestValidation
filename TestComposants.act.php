@@ -151,7 +151,7 @@ $lbl->setLocation(0,10);
 $xfer_result->addComponent($lbl);
 $cl=new Xfer_Comp_CheckList('cl1');
 $cl->setSelect(array('1'=>'abc','2'=>'def','3'=>'ghij','4'=>'klmn'));
-$cl->setValue(split(";",$cl1));
+$cl->setValue(explode(";",$cl1));
 $cl->setAction($act_modif);
 $cl->setLocation(1,10);
 $xfer_result->addComponent($cl);

@@ -51,7 +51,8 @@ $xfer_result->addComponent($lbl);
 if ($IsSearch!=0)
 {
 	$self->setForSearch($Params);
-	$lbl->setValue("{[center]}{[bold]}Résultat de la recherche{[/bold]}{[/center]}");
+	include_once("CORE/DBFind.inc.php");
+	$lbl->setValue("{[center]}{[bold]}Résultat de la recherche{[/bold]}{[newline]}{[newline]}".DBFind::getCriteriaText($self,$Params)."{[/center]}");
 }
 else {
 	$lbl->setValue("{[center]}{[bold]}Lister des SuperTableTest{[/bold]}{[/center]}");

@@ -44,7 +44,7 @@ try {
 $xfer_result=&new Xfer_Container_Custom("TestValidation","TableTest_APAS_ErrorInTable",$Params);
 $xfer_result->Caption="Erreurs en Base";
 //@CODE_ACTION@
-list($usec, $sec) = split(" ", microtime());
+list($usec, $sec) = explode(" ", microtime());
 
 $self->find();
 $grid = $self->getGrid("TableTest");
@@ -64,7 +64,7 @@ $check->setValue(0);
 $check->setLocation(1,1);
 $xfer_result->addComponent($check);
 
-list($usec2, $sec2) = split(" ", microtime());
+list($usec2, $sec2) = explode(" ", microtime());
 $t = ($sec2-$sec)+(($usec2-$usec)/10);
 
 $time=new Xfer_Comp_LabelForm('time');

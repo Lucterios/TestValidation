@@ -82,7 +82,7 @@ $file_size = filesize($file_name);
 
 $handle = fopen($file_name, 'r');
 $content = fread($handle, $file_size);
-$content = chunk_split(base64_encode($content));
+$content = chunk_explode(base64_encode($content));
 $f = fclose($handle);
 
 $img=new Xfer_Comp_Image('img2');

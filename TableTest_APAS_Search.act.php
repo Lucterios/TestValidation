@@ -48,7 +48,8 @@ $img->setValue("{[center]}{[underline]}{[bold]}Séléctionnez vos critères de rech
 $img->setLocation(0,0,3);
 $xfer_result->addComponent($img);
 $xfer_result->m_context["IsSearch"]=1;
-$xfer_result=$self->finder(1,0,$xfer_result);
+$Fields=$xfer_result=$self->findFields();
+$xfer_result->setSearchGUI($self,$Fields,1);
 $xfer_result->addAction($self->NewAction("_Rechercher","search.png","List",FORMTYPE_NOMODAL,CLOSE_YES));
 $xfer_result->addAction($self->NewAction("_Annuler","cancel.png"));
 //@CODE_ACTION@
