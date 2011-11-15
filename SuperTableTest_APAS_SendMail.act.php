@@ -18,12 +18,14 @@
 // 
 // 		Contributeurs: Fanny ALLEAUME, Pierre-Olivier VERSCHOORE, Laurent GAY
 // Action file write by SDK tool
-// --- Last modification: Date 14 November 2011 23:47:36 By  ---
+// --- Last modification: Date 15 November 2011 0:17:02 By  ---
 
 require_once('CORE/xfer_exception.inc.php');
 require_once('CORE/rights.inc.php');
 
 //@TABLES@
+require_once('extensions/org_lucterios_contacts/personneAbstraite.tbl.php');
+require_once('extensions/org_lucterios_contacts/personneMorale.tbl.php');
 require_once('extensions/TestValidation/SuperTableTest.tbl.php');
 //@TABLES@
 //@XFER:custom
@@ -31,35 +33,27 @@ require_once('CORE/xfer_custom.inc.php');
 //@XFER:custom@
 
 
-//@DESC@Fiche d'un SuperTableTest
+//@DESC@Envoyer par courriel
 //@PARAM@ 
 //@INDEX:SuperTableTest
 
 
-//@LOCK:2
+//@LOCK:0
 
-function SuperTableTest_APAS_Fiche($Params)
+function SuperTableTest_APAS_SendMail($Params)
 {
 $self=new DBObj_TestValidation_SuperTableTest();
 $SuperTableTest=getParams($Params,"SuperTableTest",-1);
 if ($SuperTableTest>=0) $self->get($SuperTableTest);
-
-$self->lockRecord("SuperTableTest_APAS_Fiche");
 try {
-$xfer_result=&new Xfer_Container_Custom("TestValidation","SuperTableTest_APAS_Fiche",$Params);
-$xfer_result->Caption="Fiche d'un SuperTableTest";
-$xfer_result->m_context['ORIGINE']="SuperTableTest_APAS_Fiche";
-$xfer_result->m_context['TABLE_NAME']=$self->__table;
-$xfer_result->m_context['RECORD_ID']=$self->id;
+$xfer_result=&new Xfer_Container_Custom("TestValidation","SuperTableTest_APAS_SendMail",$Params);
+$xfer_result->Caption="Envoyer par courriel";
 //@CODE_ACTION@
-$xfer_result=$self->show(1,0,$xfer_result);
-$xfer_result->addAction($self->NewAction('edit','edit.png','AddModify',FORMTYPE_MODAL,CLOSE_YES));
-$xfer_result->addAction($self->NewAction('_envoyer','extensions/org_lucterios_contacts/images/sendmail.png','SendMail',FORMTYPE_MODAL,CLOSE_NO));
-$xfer_result->addAction(new Xfer_Action("_Fermer", "close.png"));
+$DBMoral=new DBObj_org_lucterios_contacts_personneMorale;
+$DBMoral->get(1);
+$DBMoral->prepareSendReport($xfer_result, "SuperTableTest_APAS_rapport","Rapport",1,$self->id, 'rapport.pdf', "Ci-joint, votre rapport{[newline]}Salutations{[newline]}");
 //@CODE_ACTION@
-	$xfer_result->setCloseAction(new Xfer_Action('unlock','','CORE','UNLOCK',FORMTYPE_MODAL,CLOSE_YES,SELECT_NONE));
 }catch(Exception $e) {
-	$self->unlockRecord("SuperTableTest_APAS_Fiche");
 	throw $e;
 }
 return $xfer_result;
