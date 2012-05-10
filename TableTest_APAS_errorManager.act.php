@@ -33,7 +33,7 @@ $lbl->setLocation(0,1);
 $xfer_result->addComponent($lbl);
 
 $slct=new Xfer_Comp_Select('errorType');
-$slct->setSelect(array('0'=>'PHP','1'=>'Critique','2'=>'Grave','3'=>'Important','4'=>'Mineur'));
+$slct->setSelect(array('0'=>'PHP','1'=>'MySQL','2'=>'Critique','3'=>'Grave','4'=>'Important','5'=>'Mineur'));
 $slct->setValue('0');
 $slct->setAction($act_modif);
 $slct->setLocation(1,1);

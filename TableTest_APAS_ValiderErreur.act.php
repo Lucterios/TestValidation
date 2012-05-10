@@ -25,6 +25,8 @@ require_once('CORE/rights.inc.php');
 
 //@TABLES@
 require_once('extensions/TestValidation/TableTest.tbl.php');
+require_once('extensions/TestValidation/MachinTable.tbl.php');
+require_once('extensions/TestValidation/SuperTableTest.tbl.php');
 //@TABLES@
 //@XFER:dialogbox
 require_once('CORE/xfer_dialogBox.inc.php');
@@ -52,17 +54,30 @@ switch ($errorType) {
         		$val="";
 		$val->doSomething();
 		break;
-	case 1: // Critique
-
+	case 1: // MySQL
+		$DBTT=new DBObj_TestValidation_TableTest();
+		list($fields1,$tables1,$wheres1)=$DBTT->prepQuery(true,true);
+		$DBMT=new DBObj_TestValidation_MachinTable();
+		list($fields2,$tables2,$wheres2)=$DBMT->prepQuery(true,true);
+		$DBSTT=new DBObj_TestValidation_SuperTableTest();
+		list($fields3,$tables3,$wheres3)=$DBSTT->prepQuery(true,true);
+		$fields=array_merge($fields1,$fields2,$fields3);
+		$tables=array_merge($tables1,$tables2,$tables3);
+		$wheres=array_merge($wheres1,$wheres2,$wheres3);
+		$Q="SELECT ".implode(',',$fields)." FROM ".implode(',',$tables)." WHERE ".implode(' AND ',$wheres);
+		global $connect;
+		$connect->execute($Q,true);
+		break;
+	case 2: // Critique
 		throw new LucteriosException(CRITIC,"Critique");
 		break;
-	case 2: // grave
+	case 3: // grave
 		throw new LucteriosException(GRAVE,"grave");
 		break;
-	case 3: // important
+	case 4: // important
 		throw new LucteriosException(IMPORTANT,"Important");
 		break;
-	case 4: // Mineur
+	case 5: // Mineur
 		throw new LucteriosException(MINOR,"Mineur");
 		break;
 }

@@ -52,7 +52,7 @@ $lbl->setValue('Type de fichier');
 $lbl->setLocation(0,1);
 $xfer_result->addComponent($lbl);
 $slct=new Xfer_Comp_Select('typeFile');
-$slct->setSelect(array('txt'=>'*.txt','zip'=>'*.zip','pdf'=>'*.pdf','doc'=>'*.doc','mpg'=>'*.mpg'));
+$slct->setSelect(array('txt'=>'*.txt','zip'=>'*.zip','pdf'=>'*.pdf','doc'=>'*.doc','mpg'=>'*.mpg','bkf'=>'*.bkf'));
 $slct->setValue($typeFile);
 $slct->setAction(new Xfer_Action('','','TestValidation','UpAndDownLoad',FORMTYPE_REFRESH,CLOSE_NO));
 $slct->setLocation(1,1);
@@ -63,6 +63,8 @@ $load_action=new Xfer_Action('','','TestValidation','LoadFile',FORMTYPE_MODAL,CL
 $up=new Xfer_Comp_UpLoad('up');
 $up->compress=true;
 $up->HttpFile=true;
+include_once("CORE/fichierFonctions.inc.php");
+$up->maxsize=taille_max_dl_fichier();
 $up->setValue('LoadFile');
 $up->addFilter($typeFile);
 $up->setLocation(0,2,2);

@@ -48,10 +48,10 @@ global $rootPath;
 if(!isset($rootPath))
 	$rootPath = "";
 
-$path = realpath($rootPath."usr/TestValidation");
+$path = $rootPath."./usr/TestValidation";
 if(!is_dir($path))
 	@mkdir($path,0777);
-$destination_file = $path."/FileName.$typeFile";
+$destination_file = realpath($path."/FileName.$typeFile");
 if (!is_file($destination_file))
 	@unlink($destination_file);
 if (is_file($destination_file))
